@@ -1,0 +1,49 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+
+{% block header %}
+
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block nav %}
+
+    {% include 'CoreBundle:Core:navbar.html.twig' %}
+
+
+{% endblock %}
+
+{% block section %}
+    <section>
+
+        {% for media in newContent %}
+            <article>
+                <div>
+                    <img scr="" alt="{{media.title}}">
+                </div>
+                <div>
+                    {% if media.statut == 1 %}
+                        <p class="available">Disponible</p>
+                    {% endif %}
+
+                    {% if media.statut == 2 %}
+                        <p class="reserved">Réservé</p>
+                    {% endif %}
+
+                    {% if media.statut == 3 %}
+                        <p class="available">Empreuté</p>
+                    {% endif %}
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+
+
+    </section>
+
+
+{% endblock %}

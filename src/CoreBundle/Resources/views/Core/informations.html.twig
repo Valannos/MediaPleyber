@@ -1,0 +1,32 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+
+{% block header %}
+
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block nav %}
+
+    {% include 'CoreBundle:Core:navbar.html.twig' %}
+
+
+{% endblock %}
+
+{% block section %}
+
+    <section>
+        <div>
+            <h2>Localisation</h2>
+        </div>
+        <div>
+            <h2>Horaires</h2>
+        </div>
+
+
+    </section>
+
+{% endblock %}
