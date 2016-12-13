@@ -1,6 +1,10 @@
 {# empty Twig template #}
 {% extends 'base.html.twig' %}
 
+{% block stylesheet %}
+    
+ <link rel="stylesheet" href="{{ asset('css/Info.css') }}" />
+{% endblock %}
 
 {% block header %}
 
@@ -19,12 +23,12 @@
 {% block section %}
 
     <section>
-        <div>
+        <article>
             <h2>Localisation</h2>
-        </div>
-        <div>
+        </article>
+        <article>
             <h2>Horaires</h2>
-        </div>
+        </article>
 
 
     </section>

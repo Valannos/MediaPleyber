@@ -1,0 +1,154 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12 déc. 2016, 16:52:15
+    Author     : vanel
+*/
+
+/*###########---NEW CONTENT PAGE---######*/
+
+
+
+/*HEADER TEMPLATE*/
+
+
+
+header {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+}
+
+header div {
+
+
+
+}
+
+
+/*-----------------NAVBAR-----------------------
+
+1) GENERAL
+
+*/
+
+nav {
+    background-color: 
+        #edeeef;
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    text-align:center;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    margin:
+        1em;
+    padding: 
+        1em;
+
+}
+
+nav a h3 {
+    font-family: 'Noto Sans', sans-serif;
+
+    font-weight: bold;
+    color: black;
+
+    margin: 
+        0.3em;
+    border:
+        1px
+        #ffbb10
+        solid;
+    padding: 
+        1em;
+
+    background-color: 
+        #ffbb10;
+    transition:
+        0.5s;
+    opacity: 
+        1;
+
+}
+nav a h3:hover {
+    opacity: 
+        0.8;
+
+
+}
+
+nav a h3:hover {
+    color:white;
+
+}
+
+
+/*
+
+2) ACTIVE 
+
+*/
+
+.current_page {
+    color:white;
+}
+
+
+
+/*SECTION*/
+
+section  {
+
+    background-color: 
+        #edeeef;
+    margin: 1em;
+}
+
+.available {
+
+    color:green;
+    font-weight: bold;
+
+}
+.reserved {
+    color:darkorange;
+    font-weight: bold;
+
+}
+
+.notAvailable {
+
+    color:red;
+    font-weight: bold;
+
+}
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+section article {
+    border: 
+        1px
+        #ffbb10
+        solid;
+    border-radius:
+        10px
+        10px
+        ;
+    margin:
+        1em;
+    text-align: 
+        center;
+    padding:
+        1em;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+

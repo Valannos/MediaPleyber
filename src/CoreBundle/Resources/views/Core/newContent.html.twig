@@ -1,6 +1,9 @@
 {# empty Twig template #}
 {% extends "base.html.twig" %}
+{% block stylesheet %}
 
+    <link rel="stylesheet" href="{{ asset('css/newContent.css') }}" />
+{% endblock %}
 {% block header %}
 
     {{ parent() }}
@@ -21,6 +24,7 @@
         {% for media in newContent %}
             <article>
                 <div>
+                    <h4>{{media.title}}</h4>
                     <img scr="" alt="{{media.title}}">
                 </div>
                 <div>

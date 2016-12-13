@@ -6,3 +6,12 @@ core_newcontent:
     path: /nouveautes
     defaults:
         _controller: CoreBundle:Core:newContent
+core_additionnal_informations:
+    path: /infos
+    defaults:
+        _controller: CoreBundle:Core:accessInfos
+        
+core_catalogue:
+    path: /catalogue
+    defaults:
+        _controller: CoreBundle:Core:accessCatalogue

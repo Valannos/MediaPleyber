@@ -20,7 +20,7 @@ class MediaRepository extends \Doctrine\ORM\EntityRepository {
       
      
         $qb = $this->createQueryBuilder('m')
-                   ->where('STR_TO_DATE(m.date) > :date')
+                   ->where('m.date > :date')
                    ->setParameter('date', $limitDate)
         ;
         return $qb->getQuery()->getResult();

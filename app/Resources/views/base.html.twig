@@ -3,10 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+        {% block links %}
+
             <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Sans" rel="stylesheet"> 
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        {% endblock %}
+        {% block stylesheet %}
         {% endblock %}
     </head>
     <body>

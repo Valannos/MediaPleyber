@@ -8,12 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Media
  *
  * @ORM\Table(name="media")
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\MediaRepository")
- *  
+ *@ORM\Entity(repositoryClass = "CoreBundle\Repository\MediaRepository")
  */
-
-
-
 class Media
 {
     /**
@@ -45,6 +41,13 @@ class Media
      * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="statut", type="integer", nullable=false)
+     */
+    private $statut;
 
 
 
@@ -129,11 +132,6 @@ class Media
     {
         return $this->date;
     }
-    /**
-     * @var integer
-     */
-    private $statut;
-
 
     /**
      * Set statut
