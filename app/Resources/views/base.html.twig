@@ -7,8 +7,10 @@
 
             <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Sans" rel="stylesheet"> 
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
         {% endblock %}
         {% block stylesheet %}
+
         {% endblock %}
     </head>
     <body>
@@ -19,6 +21,22 @@
                 </div>
                 <div>
                     <img src="{{asset('img/contenu_2_q60.jpg')}}" alt="logo_pleyber_media" title="Mediathèque de Pleyber">
+                </div>
+                <div>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                        {% if is_granted('ROLE_GESTION') %}
+                            <p class="gestion">
+                                Bienvenue, {{app.user}}
+
+                            </p>
+                        {% else %}
+                            <p class="registered" >
+                                Bienvenue, {{app.user}}
+                            </p>
+                        {% endif %}
+
+                    {% endif %}
                 </div>
             </header>
 

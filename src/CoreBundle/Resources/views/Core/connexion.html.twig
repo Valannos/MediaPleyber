@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheet %}
+
+    <link rel="stylesheet" href="{{ asset('css/newContent.css') }}" />
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block nav %}
+
+    {% include 'CoreBundle:Core:navbar.html.twig' %}
+
+
+{% endblock %}
+
+{% block section %}
+
+    {% if error %}
+        <div class='error'>{{ error.message }} - Les information saisies ne nous ont pas permis de vous identifier</div>
+    {% endif %}
+
+    <section>
+        <h3>L'accès au catalogue et aux fonctionnalités de réservation nécessite d'être un utilisateur enregistré</h3>
+        <form action='{{ path('login_check') }}' method = 'post'>
+            <label for='username'>Identifiant : </label>
+            <input type='text' id='username' name='_username' placeholder='Entrez votre identifiant'>
+            
+            <label for='password'>Mot de passe : </label>
+            <input type='password' id='password' name='_password'/>
+            
+            <br/>
+            <input type='submit' value='Connexion'>
+            <input type='reset' value='Réinitialiser'>
+
+
+
+        </form>
+
+    </section>
+
+{% endblock %}

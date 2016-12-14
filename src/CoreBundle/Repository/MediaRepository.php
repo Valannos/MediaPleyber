@@ -4,6 +4,7 @@ namespace CoreBundle\Repository;
 
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Validator\Constraints\Date;
+use CoreBundle\Entity\Media;
 
 /**
  * MediaRepository
@@ -14,16 +15,30 @@ use Symfony\Component\Validator\Constraints\Date;
 class MediaRepository extends \Doctrine\ORM\EntityRepository {
 
     public function getNewContent() {
-       $limitDate = new \DateTime();
-       $limitDate->        
-               setDate(2016, 10, 1);
-      
-     
+        $limitDate = new \DateTime();
+        $limitDate->
+                setDate(2016, 10, 1);
+
+
         $qb = $this->createQueryBuilder('m')
-                   ->where('m.date > :date')
-                   ->setParameter('date', $limitDate)
+                ->where('m.date > :date')
+                ->setParameter('date', $limitDate)
         ;
         return $qb->getQuery()->getResult();
+    }
+
+    public function updateStatutToReserved($media_id, $newStatus) {
+
+        $media = $this->find($media_id);
+        if ($media->getStatut() == 2 || $media->getStatut() == 3) {
+            return false;
+        }
+        else {
+            $media->setStatut($newStatus);
+            $this->getEntitymanager()->persist($media);
+             $this->getEntityManager()->flush();
+             return true;
+        }
     }
 
 }

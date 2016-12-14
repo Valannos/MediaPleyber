@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : vanel
 */
 
-/*###########---NEW CONTENT PAGE---######*/
+/*###########---CURRENT USER RESERVATIONS & LOANS---######*/
 
 
 
@@ -124,64 +124,15 @@ section  {
     margin: 1em;
 }
 
-.available {
 
-    color:green;
-    font-weight: bold;
-
-}
-.reserved {
-    color:darkorange;
-    font-weight: bold;
-
-}
-
-.notAvailable {
-
-    color:red;
-    font-weight: bold;
-
-}
-.reservation {
-    font-family: 'Noto Sans', sans-serif;
-
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    margin: 
-        1em;
-    border:
-        0.7px
-        #ffbb10
-        solid;
-    padding: 
-        1em;
-
-    background-color: 
-        #ffbb10;
-    transition:
-        0.5s;
-    opacity: 
-        1;
-    text-decoration: 
-        none;
-    border-radius: 
-        20px
-        20px;
-}
-.reservation:hover {
-    opacity: 
-        0.8;
-    color: white;
-
-}
 
 section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-section article {
+section div article {
+   
     border: 
         1px
         #ffbb10
@@ -197,6 +148,15 @@ section article {
     padding:
         1em;
     font-family: 'Noto Sans', sans-serif;
+}
+
+section div {
+    display:
+        flex;
+    flex-direction: 
+        row;
+    flex-wrap: 
+        wrap;
 }
 
 

@@ -3,6 +3,7 @@
 namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
-{
+class User implements UserInterface, \Serializable {
+
     /**
      * @var integer
      *
@@ -38,33 +39,49 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255, nullable=false)
+     * @ORM\Column(name="username", type="string", length=255, nullable=false, unique=true)
      */
-    private $login;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=16, nullable=false)
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
+    private $plainPassword;
+
+    function getPlainPassword() {
+        return $this->plainPassword;
+    }
+
+    function setPlainPassword($plainPassword) {
+        $this->plainPassword = $plainPassword;
+    }
 
     /**
      * @var array
      *
-     * @ORM\Column(name="role", type="array", nullable=false)
+     * @ORM\Column(name="roles", type="array")
      */
-    private $role;
+    private $roles = array();
 
+    /**
+     *
+     *  @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
 
+    public function eraseCredentials() {
+        
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -72,11 +89,11 @@ class User
      * Set lastname
      *
      * @param string $lastname
+      {
      *
      * @return User
      */
-    public function setLastname($lastname)
-    {
+    public function setLastname($lastname) {
         $this->lastname = $lastname;
 
         return $this;
@@ -87,9 +104,16 @@ class User
      *
      * @return string
      */
-    public function getLastname()
-    {
+    public function getLastname() {
         return $this->lastname;
+    }
+
+    function getUsername() {
+        return $this->username;
+    }
+
+    function setUsername($username) {
+        $this->username = $username;
     }
 
     /**
@@ -99,8 +123,7 @@ class User
      *
      * @return User
      */
-    public function setFirstname($firstname)
-    {
+    public function setFirstname($firstname) {
         $this->firstname = $firstname;
 
         return $this;
@@ -111,8 +134,7 @@ class User
      *
      * @return string
      */
-    public function getFirstname()
-    {
+    public function getFirstname() {
         return $this->firstname;
     }
 
@@ -123,22 +145,6 @@ class User
      *
      * @return User
      */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
 
     /**
      * Set password
@@ -147,8 +153,7 @@ class User
      *
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -159,32 +164,60 @@ class User
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
     /**
-     * Set role
+     * Set roles
      *
-     * @param array $role
+     * @param array $roles
      *
      * @return User
      */
-    public function setRole($role)
-    {
-        $this->role = $role;
+    public function setRoles($roles) {
+        $this->roles = $roles;
 
         return $this;
     }
 
     /**
-     * Get role
+     * Get roles
      *
      * @return array
      */
-    public function getRole()
-    {
-        return $this->role;
+    public function getRoles() {
+        return $this->roles;
     }
+
+    function getSalt() {
+        return $this->salt;
+    }
+
+    function setSalt($salt) {
+        $this->salt = $salt;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized) {
+        list (
+                $this->id,
+                $this->username,
+                $this->password,
+                ) = unserialize($serialized);
+    }
+
+    public function __toString() {
+        return $this->getFirstname() . ' ' . $this->getLastname();
+    }
+
 }

@@ -26,10 +26,12 @@
                 <div>
                     <h4>{{media.title}}</h4>
                     <img scr="" alt="{{media.title}}">
+
                 </div>
                 <div>
                     {% if media.statut == 1 %}
                         <p class="available">Disponible</p>
+                        <a class="reservation" href="{{path('core_reserver_a_media')}}/{{media.id}}">Réserver </a>
                     {% endif %}
 
                     {% if media.statut == 2 %}
@@ -37,7 +39,18 @@
                     {% endif %}
 
                     {% if media.statut == 3 %}
-                        <p class="notAvailable">Empreuté</p>
+                        <p class="notAvailable">Emprunté</p>
+                    {% endif %}
+                    {% if reqMedia is defined and reqMedia == media.id %}
+
+                        {% if isSuccessfullyReserved == 0 %}
+                            <h5 class="res_succes">Ouvrage déjà réservé ou emprunté.</h5>
+                        {% elseif isSuccessfullyReserved == 1 %}
+                            <h5 class="res_echec">Erreur !</h5>
+                        {% elseif isSuccessfullyReserved == 2 %}
+                            <h5 class="res_echec">Réservation réussie !</h5>
+                        {% endif %}
+
                     {% endif %}
                 </div>
 

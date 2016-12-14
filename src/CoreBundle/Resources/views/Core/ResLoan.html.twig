@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block stylesheet %}
+
+    <link rel="stylesheet" href="{{ asset('css/MyResandLoans.css') }}" />
+{% endblock %}
+{% block header %}
+
+    {{ parent() }}
+
+
+{% endblock %}
+
+{% block nav %}
+
+    {% include 'CoreBundle:Core:navbar.html.twig' %}
+
+
+{% endblock %}
+
+{% block section %}
+    <section>
+        <h4>Mes Réservations</h4>
+        <div>
+
+            {% for res in Reservation %}
+                <article>
+                   
+                    <h4>{{res.media.title}}</h4></br>
+                    <img scr="" alt="{{res.media.title}}"></br>
+                    <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+
+                    
+
+
+                </article>
+
+            {% endfor %}
+        </div>
+        <h4>Mes emprunts</h4>
+        <div>
+
+        </div>
+
+    </section>
+
+
+{% endblock %}

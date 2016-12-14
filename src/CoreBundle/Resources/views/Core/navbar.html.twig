@@ -10,12 +10,22 @@
 
     <a href=""><h3>Evenements  </h3></a>
 
+    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
+    {% endif %}
 
-    <a href=""><h3>Connexion </h3></a>
 
     <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
 
     <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations pratiques </h3></a>
-
+    {% if is_granted('ROLE_GESTION')  %}
+        <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations en cours</h3></a>
+    {% endif %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
+    {% endif %}
+    {% if is_granted('ROLE_REGISTERED') and not is_granted('ROLE_GESTION') %}
+        <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes réservations et emprunts</h3></a>
+    {% endif %}
 
 </nav>

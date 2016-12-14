@@ -6,6 +6,7 @@ core_newcontent:
     path: /nouveautes
     defaults:
         _controller: CoreBundle:Core:newContent
+        
 core_additionnal_informations:
     path: /infos
     defaults:
@@ -15,3 +16,32 @@ core_catalogue:
     path: /catalogue
     defaults:
         _controller: CoreBundle:Core:accessCatalogue
+        
+        
+core_reservation:
+    path: /gestion/reservations
+    defaults:
+        _controller: CoreBundle:Core:manageReservation
+
+core_reserver_a_media:
+    path: /catalogue/reserve/{media_id}
+    defaults:
+        _controller: CoreBundle:Core:reserveMedia
+        media_id: -1
+core_user_res_and_load:
+    path: /MesResEtEmprunts
+    defaults:
+        _controller: CoreBundle:Core:getUserMedia
+        
+
+
+login:
+    path: /login
+    defaults:
+        _controller: CoreBundle:User:login
+
+login_check:
+    path: /login_check
+    
+logout:
+    path: /logout

@@ -21,6 +21,15 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
+
+}
+.gestion {
+    color: 
+        red;
+    font-weight: 
+        bold;
+    font-family: 
+        'Noto Sans', sans-serif;
 }
 
 header div {
