@@ -4,6 +4,7 @@ namespace CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CoreBundle\Entity\Media;
+use CoreBundle\Repository\LoanRepository;
 use Doctrine\ORM\EntityRepository;
 
 class CoreController extends Controller {
@@ -41,7 +42,7 @@ class CoreController extends Controller {
         $allMedia = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Media')->findAll();
         if (!$update) {
 
-          return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 0, 'reqMedia' => $media_id, 'catalogue' => $allMedia));
+            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 0, 'reqMedia' => $media_id, 'catalogue' => $allMedia));
         }
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
@@ -54,12 +55,21 @@ class CoreController extends Controller {
             return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 1, 'reqMedia' => $media_id, 'catalogue' => $allMedia));
         }
     }
-    
+
     public function getUserMediaAction() {
-        
+
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $res = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Reservation')->getUserReservations($user);
         return $this->render('CoreBundle:Core:ResLoan.html.twig', array('Reservation' => $res));
+    }
+
+    public function manageReservationAction() {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
+            throw $this->createAccessDeniedException();
+        }
+        $allLoan = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Loan')->findAll();
+        $allRes = $this->getDoctrine()->getManager()->getRepository('CoreBundle:Reservation')->findAll();
+        return $this->render('CoreBundle:Core:AllResAllLoans.html.twig', array('Reservation' => $allRes, 'Loan' => $allLoan));
     }
 
 }

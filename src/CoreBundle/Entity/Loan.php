@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Loan
  *
  * @ORM\Table(name="loan", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="user_id_2", columns={"user_id", "media_id"}), @ORM\Index(name="media_coderef", columns={"media_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass = "CoreBundle\Repository\LoanRepository")
  */
-class Loan
-{
+class Loan {
+
     /**
      * @var integer
      *
@@ -36,31 +36,31 @@ class Loan
     private $loanDate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="media_id", type="string", length=20, nullable=false)
+     * @var \CoreBundle\Entity\Media
+     * 
+     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Media") 
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     * })
      */
     private $mediaId;
 
     /**
-     * @var \CoreBundle\Entity\Media
+     * @var \CoreBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
      */
     private $user;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -71,8 +71,7 @@ class Loan
      *
      * @return Loan
      */
-    public function setReturnDate($returnDate)
-    {
+    public function setReturnDate($returnDate) {
         $this->returnDate = $returnDate;
 
         return $this;
@@ -83,8 +82,7 @@ class Loan
      *
      * @return \DateTime
      */
-    public function getReturnDate()
-    {
+    public function getReturnDate() {
         return $this->returnDate;
     }
 
@@ -95,8 +93,7 @@ class Loan
      *
      * @return Loan
      */
-    public function setLoanDate($loanDate)
-    {
+    public function setLoanDate($loanDate) {
         $this->loanDate = $loanDate;
 
         return $this;
@@ -107,8 +104,7 @@ class Loan
      *
      * @return \DateTime
      */
-    public function getLoanDate()
-    {
+    public function getLoanDate() {
         return $this->loanDate;
     }
 
@@ -119,8 +115,7 @@ class Loan
      *
      * @return Loan
      */
-    public function setMediaId($mediaId)
-    {
+    public function setMediaId($mediaId) {
         $this->mediaId = $mediaId;
 
         return $this;
@@ -131,8 +126,7 @@ class Loan
      *
      * @return string
      */
-    public function getMediaId()
-    {
+    public function getMediaId() {
         return $this->mediaId;
     }
 
@@ -143,8 +137,7 @@ class Loan
      *
      * @return Loan
      */
-    public function setUser(\CoreBundle\Entity\Media $user = null)
-    {
+    public function setUser(\CoreBundle\Entity\Media $user = null) {
         $this->user = $user;
 
         return $this;
@@ -155,8 +148,8 @@ class Loan
      *
      * @return \CoreBundle\Entity\Media
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
 }
