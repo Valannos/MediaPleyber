@@ -21,46 +21,34 @@
 {% block section %}
     <section>
 
-        {% for media in catalogue %}
+        {% for book in books %}
             <article>
                 <div>
-                    <img scr="" alt="{{media.title}}">
-                    <h4>{{media.title}}</h4>
+                    <img scr="" alt="{{book.media.title}}">
+                    <h4>{{book.media.title}}</h4>
 
 
-                    {% if media.type == 0 %}
-                        <p>De {{media.book.author}}</p>
-
-
-
-                    {% endif %}
-
-
-
-
-
-
-
-
-
+                   
+                        <p>De {{book.author}}</p>
+                        
 
 
 
                 </div>
                 <div>
-                    {% if media.statut == 1 %}
+                    {% if book.media.statut == 1 %}
                         <p class="available">Disponible</p>
-                        <a class="reservation" href="{{path('core_reserver_a_media')}}/{{media.id}}">Réserver </a>
+                        <a class="reservation" href="{{path('core_reserver_a_media')}}/{{book.media.id}}">Réserver </a>
                     {% endif %}
 
-                    {% if media.statut == 2 %}
+                    {% if book.media.statut == 2 %}
                         <p class="reserved">Réservé</p>
                     {% endif %}
 
-                    {% if media.statut == 3 %}
+                    {% if book.media.statut == 3 %}
                         <p class="notAvailable">Emprunté</p>
                     {% endif %}
-                    {% if reqMedia is defined and reqMedia == media.id %}
+                    {% if reqMedia is defined and reqMedia == book.media.id %}
 
                         {% if isSuccessfullyReserved == 0 %}
                             <h5 class="res_succes">Ouvrage déjà réservé ou emprunté.</h5>

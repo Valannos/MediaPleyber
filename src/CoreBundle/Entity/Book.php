@@ -43,7 +43,7 @@ class Book
      *   @ORM\JoinColumn(name="id_media", referencedColumnName="id")
      * })
      */
-    private $idMedia;
+    private $media;
 
 
 
@@ -106,26 +106,26 @@ class Book
     }
 
     /**
-     * Set idMedia
+     * Set media
      *
-     * @param \CoreBundle\Entity\Media $idMedia
+     * @param \CoreBundle\Entity\Media $media
      *
      * @return Book
      */
-    public function setIdMedia(\CoreBundle\Entity\Media $idMedia = null)
+    public function setMedia(\CoreBundle\Entity\Media $media = null)
     {
-        $this->idMedia = $idMedia;
+        $this->media = $media;
 
         return $this;
     }
 
     /**
-     * Get idMedia
+     * Get media
      *
      * @return \CoreBundle\Entity\Media
      */
-    public function getIdMedia()
+    public function getMedia()
     {
-        return $this->idMedia;
+        return $this->media;
     }
 }
