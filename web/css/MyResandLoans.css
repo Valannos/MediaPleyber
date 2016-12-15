@@ -128,7 +128,7 @@ section  {
 
 section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 section div article {
@@ -159,4 +159,7 @@ section div {
         wrap;
 }
 
+h3, h4 {
+    font-family: 'Noto Sans', sans-serif; 
+}
 

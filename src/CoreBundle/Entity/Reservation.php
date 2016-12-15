@@ -47,9 +47,35 @@ class Reservation
      * })
      */
     private $media;
+    
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="statut", type="boolean")
+     * 
+     * 
+     */
+    private $statut;
+    
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="borrowed", type="boolean")
+     */
+    
+    
+    
+    private $borrowed;
 
+    function getBorrowed() {
+        return $this->borrowed;
+    }
 
+    function setBorrowed($borrowed) {
+        $this->borrowed = $borrowed;
+    }
 
+    
     /**
      * Get id
      *
@@ -131,4 +157,13 @@ class Reservation
     {
         return $this->media;
     }
+    function getStatut() {
+        return $this->statut;
+    }
+
+    function setStatut($statut) {
+        $this->statut = $statut;
+    }
+
+
 }

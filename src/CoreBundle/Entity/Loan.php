@@ -24,7 +24,7 @@ class Loan {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="return_date", type="date", nullable=false)
+     * @ORM\Column(name="return_date", type="date", nullable=true)
      */
     private $returnDate;
 
@@ -43,7 +43,7 @@ class Loan {
      *   @ORM\JoinColumn(name="media_id", referencedColumnName="id")
      * })
      */
-    private $mediaId;
+    private $media;
 
     /**
      * @var \CoreBundle\Entity\User
@@ -54,102 +54,67 @@ class Loan {
      * })
      */
     private $user;
-
+    
     /**
-     * Get id
      *
-     * @return integer
+     * @var boolean
+     * @ORM\Column(name="isReturned", type="boolean")
      */
-    public function getId() {
+    
+    
+    private $isReturned;
+
+    
+    
+    function getId() {
         return $this->id;
     }
 
-    /**
-     * Set returnDate
-     *
-     * @param \DateTime $returnDate
-     *
-     * @return Loan
-     */
-    public function setReturnDate($returnDate) {
-        $this->returnDate = $returnDate;
-
-        return $this;
-    }
-
-    /**
-     * Get returnDate
-     *
-     * @return \DateTime
-     */
-    public function getReturnDate() {
+    function getReturnDate(): \DateTime {
         return $this->returnDate;
     }
 
-    /**
-     * Set loanDate
-     *
-     * @param \DateTime $loanDate
-     *
-     * @return Loan
-     */
-    public function setLoanDate($loanDate) {
-        $this->loanDate = $loanDate;
-
-        return $this;
-    }
-
-    /**
-     * Get loanDate
-     *
-     * @return \DateTime
-     */
-    public function getLoanDate() {
+    function getLoanDate(): \DateTime {
         return $this->loanDate;
     }
 
-    /**
-     * Set mediaId
-     *
-     * @param string $mediaId
-     *
-     * @return Loan
-     */
-    public function setMediaId($mediaId) {
-        $this->mediaId = $mediaId;
-
-        return $this;
+    function getMedia(): \CoreBundle\Entity\Media {
+        return $this->media;
     }
 
-    /**
-     * Get mediaId
-     *
-     * @return string
-     */
-    public function getMediaId() {
-        return $this->mediaId;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \CoreBundle\Entity\Media $user
-     *
-     * @return Loan
-     */
-    public function setUser(\CoreBundle\Entity\Media $user = null) {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \CoreBundle\Entity\Media
-     */
-    public function getUser() {
+    function getUser(): \CoreBundle\Entity\User {
         return $this->user;
     }
 
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setReturnDate(\DateTime $returnDate) {
+        $this->returnDate = $returnDate;
+    }
+
+    function setLoanDate(\DateTime $loanDate) {
+        $this->loanDate = $loanDate;
+    }
+
+    function setMedia(\CoreBundle\Entity\Media $media) {
+        $this->media = $media;
+    }
+
+    function setUser(\CoreBundle\Entity\User $user) {
+        $this->user = $user;
+    }
+    function getIsReturned() {
+        return $this->isReturned;
+    }
+
+    function setIsReturned($isReturned) {
+        $this->isReturned = $isReturned;
+    }
+
+
+
+
+  
 }

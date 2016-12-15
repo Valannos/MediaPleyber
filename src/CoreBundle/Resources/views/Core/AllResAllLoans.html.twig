@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block stylesheet %}
 
-    <link rel="stylesheet" href="{{ asset('css/MyResandLoans.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/newContent.css') }}" />
 {% endblock %}
 {% block header %}
 
@@ -20,16 +20,34 @@
 {% block section %}
 
     <section>
-        <h3>Gestionnaire d'emprunts</h3>
-        <h4>Réservations en attente</h4>
         <div>
+        <h3>Gestionnaire d'emprunts</h3>
+        </div>
+        <div>
+        <h4>Réservations en attente</h4>
+        </div>
+        {% if isSuccessfullyBorrowed is defined and isSuccessfullyBorrowed == true %}
+            <h5>Emprunt validé !</h5>
+
+        {% elseif isSuccessfullyBorrowed is defined and isSuccessfullyBorrowed != true %}
+            <h5>L'emprunt n'a pu être validé...</h5>
+        {% endif %}
+        <div class='gestion_reservation'>
 
             {% for res in Reservation %}
                 <article>
+                    <div>
+                        <h4>{{res.media.title}}</h4>
+                       
+                        <img scr="" alt="{{res.media.title}}">
+                        
+                        <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                    </div>
 
-                    <h4>{{res.media.title}}</h4></br>
-                    <img scr="" alt="{{res.media.title}}"></br>
-                    <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                    <div>
+                        <a class="reservation" href="{{path('core_gestion_valid_loan')}}/{{res.id}}">Confirmer l'emprunt</a>
+                        <a class="annulation" href="">Annuler la réservation</a>
+                    </div>
 
 
 
@@ -38,20 +56,25 @@
 
             {% endfor %}
         </div>
-        <h4>Empunts en cours</h4>
         <div>
+        <h4>Empunts en cours</h4>
+        </div>
+        <div class='gestion_reservation'>
             {% for loan in Loan %}
-                <article>
+                {% if loan.isReturned == 0 %} 
+                    <article>
 
-                    <h4>{{loan.media.title}}</h4></br>
-                    <img scr="" alt="{{loan.media.title}}"></br>
-                    <p>Emprunté le {{loan.date|date('d-m-Y')}}.</p>
-                    <p>Par : {{ loan.user.firstname ~' '~ loan.user.lastname }}</p>
+                        <h4>{{loan.media.title}}</h4></br>
+                        <img scr="" alt="{{loan.media.title}}"></br>
+                        <p>Emprunté le {{loan.loanDate|date('d-m-Y')}}.</p>
+                        <p>Par : {{ loan.user.firstname ~' '~ loan.user.lastname }}</p>
+                        <a class="reservation" href="{{path('core_gestion_valid_return')}}/{{loan.id}}">Confirmer le retour</a>
 
 
 
 
-                </article>
+                    </article>
+                {%           endif %} 
 
             {% endfor %}
         </div>

@@ -27,17 +27,56 @@ class MediaRepository extends \Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getResult();
     }
 
-    public function updateStatutToReserved($media_id, $newStatus) {
+    public function getMediaByReservation($res) {
 
-        $media = $this->find($media_id);
+
+        return $res->getMedia();
+    }
+    
+    public function getMediaByLoan(\CoreBundle\Entity\Loan $loan) {
+        
+        return $loan->getMedia();
+        
+    }
+    
+    
+
+    public function updateStatutToReserved($media, $newStatus) {
+
+        
         if ($media->getStatut() == 2 || $media->getStatut() == 3) {
             return false;
-        }
-        else {
+        } else {
             $media->setStatut($newStatus);
             $this->getEntitymanager()->persist($media);
-             $this->getEntityManager()->flush();
-             return true;
+            $this->getEntityManager()->flush();
+            return true;
+        }
+    }
+
+    public function updateStatutToBorrowed(Media $media, $newStatus) {
+
+
+        if ($media->getStatut() != 2) {
+            return false;
+        } else {
+            $media->setStatut($newStatus);
+            $this->getEntitymanager()->persist($media);
+            $this->getEntityManager()->flush();
+            return true;
+        }
+    }
+    
+    public function updateStatutToAvailable(Media $media, $newStatus) {
+
+       
+        if ($media->getStatut() == 1 ) {
+            return false;
+        } else {
+            $media->setStatut($newStatus);
+            $this->getEntitymanager()->persist($media);
+            $this->getEntityManager()->flush();
+            return true;
         }
     }
 

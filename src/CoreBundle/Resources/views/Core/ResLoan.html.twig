@@ -18,19 +18,21 @@
 {% endblock %}
 
 {% block section %}
-    
+
     <section>
         <h4>Mes Réservations</h4>
         <div>
 
             {% for res in Reservation %}
                 <article>
-                   
-                    <h4>{{res.media.title}}</h4></br>
-                    <img scr="" alt="{{res.media.title}}"></br>
-                    <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
-
+                    <div>
+                        <h4>{{res.media.title}}</h4></br>
+                        <img scr="" alt="{{res.media.title}}"></br>
+                        <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                    </div>
                     
+
+
 
 
                 </article>

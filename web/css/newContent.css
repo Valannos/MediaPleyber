@@ -119,9 +119,7 @@ nav a h3:hover {
 
 section  {
 
-    background-color: 
-        #edeeef;
-    margin: 1em;
+
 }
 
 .available {
@@ -142,7 +140,7 @@ section  {
     font-weight: bold;
 
 }
-.reservation {
+.reservation, .annulation {
     font-family: 'Noto Sans', sans-serif;
 
     font-weight: bold;
@@ -172,16 +170,38 @@ section  {
 .reservation:hover {
     opacity: 
         0.8;
-    color: white;
+    color: 
+        green;
+
+}
+.annulation:hover {
+    opacity: 
+        0.8;
+    color:
+        red;
+    
 
 }
 
 section {
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: 
+        #edeeef;
+    margin: 
+        1em;
+}
+
+section div {
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
 }
-section article {
+
+section div article {
+    
     border: 
         1px
         #ffbb10
@@ -196,7 +216,8 @@ section article {
         center;
     padding:
         1em;
-    font-family: 'Noto Sans', sans-serif;
+
 }
+
 
 

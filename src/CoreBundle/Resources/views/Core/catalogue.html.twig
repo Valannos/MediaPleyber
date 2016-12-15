@@ -24,8 +24,27 @@
         {% for media in catalogue %}
             <article>
                 <div>
-                    <h4>{{media.title}}</h4>
                     <img scr="" alt="{{media.title}}">
+                    <h4>{{media.title}}</h4>
+
+
+                    {% if media.type == 0 %}
+                        <p>De {{media.book.author}}</p>
+
+
+
+                    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
                 <div>

@@ -28,10 +28,31 @@ core_reserver_a_media:
     defaults:
         _controller: CoreBundle:Core:reserveMedia
         media_id: -1
+        
 core_user_res_and_load:
     path: /MesResEtEmprunts
     defaults:
         _controller: CoreBundle:Core:getUserMedia
+
+core_gestion_valid_loan:
+    path: /gestion/reservations/valid_loan/{res_id}
+    defaults:
+        _controller: CoreBundle:Core:validLoan
+        res_id: -1
+        
+core_gestion_cancel_reservation:
+    path: /gestion/reservations/cancel/{res_id}
+    defaults:
+        _controller: CoreBundle:Core:cancelReservation
+        res_id: -1
+
+core_gestion_valid_return:
+    path: /gestion/reservations/return/{loan_id}
+    defaults:
+        _controller: CoreBundle:Core:validReturn
+        loan_id: -1
+        
+    
         
 
 

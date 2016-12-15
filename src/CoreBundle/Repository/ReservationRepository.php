@@ -18,12 +18,14 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository {
         $resa = new Reservation();
         $today = new \DateTime();
         $resa->setDate($today);
-        var_dump($media_id);
+        //var_dump($media_id);
 
         $resa->setUser($user);
 
         $media = $this->getEntityManager()->getRepository('CoreBundle:Media')->find($media_id);
         $resa->setMedia($media);
+        $resa->setStatut(1);
+        $resa->setBorrowed(0);
         $em = $this->getEntityManager();
         $em->persist($resa);
         $em->flush();
@@ -31,15 +33,46 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository {
 
         return true;
     }
-    
+
     public function getUserReservations($user) {
-        
-      $qb =  $this->createQueryBuilder('r')
-             ->where('r.user = :user')
-             ->setParameter('user', $user);
-        
+
+        $qb = $this->createQueryBuilder('r')
+                ->where('r.user = :user')
+                ->setParameter('user', $user);
+
         return $qb->getQuery()->getResult();
-        
+    }
+
+    public function cancelReservation($res_id) {
+
+        $em = $this->getEntityManager();
+        $res = $this->find($res_id);
+        $res->setStatut(0);
+        $em->persist($res);
+        $em->flush();
+
+        return true;
+    }
+
+    public function getReservationsWithoutEffectiveLoan() {
+
+        $qb = $this->createQueryBuilder('r')
+        ->where('r.borrowed = 0');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function changeBorrowedState(Reservation $res) {
+
+        if ($res->getBorrowed() == true) {
+
+            $res->setBorrowed(false);
+        } else {
+            $res->setBorrowed(true);
+        }
+        $this->getEntityManager()->persist($res);
+        $this->getEntityManager()->flush();
+        return true;
     }
 
 }
