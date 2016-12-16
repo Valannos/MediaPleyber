@@ -13,5 +13,57 @@
 
     {% include 'CoreBundle:Core:navbar.html.twig' %}
 
+    <button id="event">Cliquez pour obtenir les futurs évènements</button>
+    <p id="json0"></p>
+    <p id="json1"></p>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+
+        console.log('AJAX Request');
+
+        var eventBtn = document.getElementById('event');
+
+
+
+
+
+        eventBtn.onclick = function () {
+
+            var xmlhttp = new XMLHttpRequest();
+
+
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+
+
+
+
+
+
+
+
+                        console.log(this.responseText);
+                        gotEvents = JSON.parse(this.responseText);
+
+                        for (var i = 0; i < gotEvents.length; i++) {
+                            event_field = document.getElementById('json' + i).innerHTML = gotEvents[i].title;
+                        }
+                    } else {
+                        console.log(xmlhttp.statusText);
+                    }
+                }
+
+            };
+            xmlhttp.open("GET", "{{path('core_event')}}");
+            xmlhttp.send();
+        };
+
+    </script>
 
 {% endblock %}

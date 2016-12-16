@@ -3,20 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/web/css/newContent.css</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/web/css/MyResandLoans.css</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Repository/ReservationRepository.php</file>
+            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/AllResAllLoans.html.twig</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/config/routing.yml</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Repository/MediaRepository.php</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Controller/CoreController.php</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/newContent.html.twig</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/app/Resources/views/base.html.twig</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Entity/Media.php</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Entity/Reservation.php</file>
+            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Entity/Loan.php</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/catalogue.html.twig</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/ResLoan.html.twig</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/navbar.html.twig</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/web/css/Info.css</file>
+            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Controller/CoreController.php</file>
         </group>
     </open-files>
 </project-private>

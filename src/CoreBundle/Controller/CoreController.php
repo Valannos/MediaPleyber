@@ -22,7 +22,7 @@ class CoreController extends Controller {
 
 
 
-        $newContent = $this->getReservationRepository()->getNewContent();
+        $newContent = $this->getMediaRepository()->getNewContent();
         return $this->render('CoreBundle:Core:newContent.html.twig', array('newContent' => $newContent));
     }
 

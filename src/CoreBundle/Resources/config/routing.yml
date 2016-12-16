@@ -16,7 +16,11 @@ core_catalogue:
     path: /catalogue
     defaults:
         _controller: CoreBundle:Core:accessCatalogue
-        
+
+core_event:
+    path: /events
+    defaults:
+        _controller: CoreBundle:Event:displaysEvent
         
 core_reservation:
     path: /gestion/reservations
