@@ -24,7 +24,7 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
     {% endif %}
-    {% if is_granted('ROLE_REGISTERED') and not is_granted('ROLE_GESTION') %}
+    {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
         <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes réservations et emprunts</h3></a>
     {% endif %}
 

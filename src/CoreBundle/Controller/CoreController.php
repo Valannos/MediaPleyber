@@ -35,13 +35,15 @@ class CoreController extends Controller {
 
         $catalogue = $this->getMediaRepository()->findAll();
         $books = $this->getBookRepository()->findAll();
-        return $this->render('CoreBundle:Core:catalogue.html.twig', array('catalogue' => $catalogue, 'books' => $books));
+        $cds = $this->getCdRepository()->findAll();
+        $comics = $this->getComicRepository()->findAll();
+        return $this->render('CoreBundle:Core:catalogue.html.twig', array('catalogue' => $catalogue, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
     }
 
     /* ++++++++++++++RESERVATIONS AND LOANS METHODS+++++++++++++++ */
 
 
-    /*-------------------REPOSITORY ACCESS METHODS------------*/
+    /* -------------------REPOSITORY ACCESS METHODS------------ */
 
     public function getLoanRepository() {
 
@@ -64,37 +66,50 @@ class CoreController extends Controller {
         return $this->getDoctrine()->getManager()->getRepository('CoreBundle:Reservation');
     }
 
-    /*-------------------------------------------*/
-    
+    public function getCdRepository() {
+
+        return $this->getDoctrine()->getManager()->getRepository('CoreBundle:Cd');
+    }
+
+    public function getComicRepository() {
+
+        return $this->getDoctrine()->getManager()->getRepository('CoreBundle:Comic');
+    }
+
+    /* ------------------------------------------- */
+
     public function reserveMediaAction($media_id) {
         if ($media_id == -1) {
             $this->redirectToRoute('core_catalogue');
         }
-
+        $cds = $this->getCdRepository()->findAll();
+        $comics = $this->getComicRepository()->findAll();
         $media = $this->getMediaRepository()->find($media_id);
         $update = $this->getMediaRepository()->updateStatutToReserved($media, 2);
         $books = $this->getBookRepository()->findAll();
+         $catalogue = $this->getMediaRepository()->findAll();
         if (!$update) {
 
-            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 0, 'reqMedia' => $media_id, 'books' => $books));
+            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 0, 'reqMedia' => $media_id, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
         }
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         if ($this->getReservationRepository()->createReservation($user, $media_id)) {
-            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 2, 'reqMedia' => $media_id, 'books' => $books));
+            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 2, 'reqMedia' => $media_id, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
         } else {
 
 
-            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 1, 'reqMedia' => $media_id, 'catalogue' => $allMedia));
+            return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 1, 'reqMedia' => $media_id, 'catalogue' => $catalogue, 'Cd' => $cds, 'Comics' => $comics));
         }
     }
 
     public function getUserMediaAction() {
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $res = $this->getReservationRepository()->getUserReservations($user);
-        return $this->render('CoreBundle:Core:ResLoan.html.twig', array('Reservation' => $res));
+        $userReservation = $this->getReservationRepository()->getUserReservations($user);
+        $userLoan = $this->getLoanRepository()->getUserLoans($user);
+        return $this->render('CoreBundle:Core:ResLoan.html.twig', array('Reservation' => $userReservation, 'Loan' => $userLoan));
     }
 
     public function manageReservationAction() {
@@ -110,7 +125,7 @@ class CoreController extends Controller {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
             throw $this->createAccessDeniedException();
         }
-        
+
 
 
         $allLoan = $this->getLoanRepository()->findAll();
@@ -133,6 +148,23 @@ class CoreController extends Controller {
 
             $this->getReservationRepository()->changeBorrowedState($res);
             return $this->redirectToRoute('core_reservation', array('Reservation' => $allRes, 'Loan' => $allLoan, 'isSuccessfullyBorrowed' => true));
+        }
+    }
+
+    public function cancelReservationAction($res_id) {
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
+            throw $this->createAccessDeniedException();
+        }
+        $allLoan = $this->getLoanRepository()->findAll();
+        $allRes = $this->getReservationRepository()->getReservationsWithoutEffectiveLoan();
+        $res = $this->getReservationRepository()->find($res_id);
+        dump($res);
+        if ($res->getStatut() == 1) {
+
+            $res->setStatut(0);
+            $this->getDoctrine()->getManager()->persist($res);
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('core_reservation', array('Reservation' => $allRes, 'Loan' => $allLoan));
         }
     }
 

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cd", indexes={@ORM\Index(name="id", columns={"id_media"})})
  * @ORM\Entity
  */
-class Cd
-{
+class Cd {
+
     /**
      * @var integer
      *
@@ -36,17 +36,21 @@ class Cd
      *   @ORM\JoinColumn(name="id_media", referencedColumnName="id")
      * })
      */
-    private $idMedia;
+    private $media;
 
-
+    /**
+     * @var string 
+     * 
+     * @ORM\Column(name="genre", type="string")
+     */
+    private $genre;
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -57,8 +61,7 @@ class Cd
      *
      * @return Cd
      */
-    public function setAuthor($author)
-    {
+    public function setAuthor($author) {
         $this->author = $author;
 
         return $this;
@@ -69,32 +72,38 @@ class Cd
      *
      * @return string
      */
-    public function getAuthor()
-    {
+    public function getAuthor() {
         return $this->author;
     }
 
     /**
-     * Set idMedia
+     * Set Media
      *
-     * @param \CoreBundle\Entity\Media $idMedia
+     * @param \CoreBundle\Entity\Media $media
      *
      * @return Cd
      */
-    public function setIdMedia(\CoreBundle\Entity\Media $idMedia = null)
-    {
-        $this->idMedia = $idMedia;
+    public function setMedia(\CoreBundle\Entity\Media $media = null) {
+        $this->media = $media;
 
         return $this;
     }
 
     /**
-     * Get idMedia
+     * Get Media
      *
      * @return \CoreBundle\Entity\Media
      */
-    public function getIdMedia()
-    {
-        return $this->idMedia;
+    public function getMedia() {
+        return $this->media;
     }
+
+    public function getGenre() {
+        return $this->genre;
+    }
+
+    public function setGenre($genre) {
+        $this->genre = $genre;
+    }
+
 }

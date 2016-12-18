@@ -21,21 +21,26 @@
 {% block section %}
     <section>
 
-        {% for book in books %}
-            <article>
-                <div>
-                    <img scr="" alt="{{book.media.title}}">
+        {# DISPLAYS BOOKS LIST #}
+        <h2>Livres</h2>
+        <div>
+
+            {% for book in books %}
+
+                <article>
+
                     <h4>{{book.media.title}}</h4>
+                    <img src="{{asset('img/books')}}/{{book.media.cover}}" alt="{{book.media.title}}" width="205" height="340">
 
 
-                   
-                        <p>De {{book.author}}</p>
-                        
+                    <p>Auteur : {{book.author}}</p>
+                    <p><strong>{{book.genre}}</strong></p>
 
 
 
-                </div>
-                <div>
+
+
+
                     {% if book.media.statut == 1 %}
                         <p class="available">Disponible</p>
                         <a class="reservation" href="{{path('core_reserver_a_media')}}/{{book.media.id}}">Réserver </a>
@@ -59,14 +64,112 @@
                         {% endif %}
 
                     {% endif %}
-                </div>
-
-            </article>
-
-        {% endfor %}
 
 
+                </article>
 
+
+            {% endfor %}
+        </div>
+        {# DISPLAYS CDs LIST #}
+        <h2>CDs</h2>
+        <div>
+
+            {% for cd in Cd %}
+
+
+                <article>
+                    <h4>{{cd.media.title}}</h4>
+                    <img src="{{asset('img/cds')}}/{{cd.media.cover}}" alt="{{cd.media.title}}" width="250" height="250">
+
+
+                    <p>Artiste :  {{cd.author}}</p>
+                    <p><strong>{{cd.genre}}</strong></p>
+
+
+
+
+
+                    {% if cd.media.statut == 1 %}
+                        <p class="available">Disponible</p>
+                        <a class="reservation" href="{{path('core_reserver_a_media')}}/{{cd.media.id}}">Réserver </a>
+                    {% endif %}
+
+                    {% if cd.media.statut == 2 %}
+                        <p class="reserved">Réservé</p>
+                    {% endif %}
+
+                    {% if cd.media.statut == 3 %}
+                        <p class="notAvailable">Emprunté</p>
+                    {% endif %}
+                    {% if reqMedia is defined and reqMedia == cd.media.id %}
+
+                        {% if isSuccessfullyReserved == 0 %}
+                            <h5 class="res_succes">Ouvrage déjà réservé ou emprunté.</h5>
+                        {% elseif isSuccessfullyReserved == 1 %}
+                            <h5 class="res_echec">Erreur !</h5>
+                        {% elseif isSuccessfullyReserved == 2 %}
+                            <h5 class="res_echec">Réservation réussie !</h5>
+                        {% endif %}
+
+                    {% endif %}
+
+
+                </article>
+
+
+            {% endfor %}
+        </div>
+
+        {# DISPLAYS COMICS LIST #}
+        <h2>Bandes-dessinées</h2>
+        <div>
+
+            {% for comic in Comics %}
+
+                <article>
+                    <h4>{{comic.media.title}}</h4>
+                    <img src="{{asset('img/comics')}}/{{comic.media.cover}}" alt="{{comic.media.title}}"  width = "255" height="351" }>
+
+
+                    <p>Scénario : {{comic.author}}</p>
+                    <p>Dessin : {{comic.drawer}}</p>
+
+
+
+
+
+
+                    {% if comic.media.statut == 1 %}
+                        <p class="available">Disponible</p>
+                        <a class="reservation" href="{{path('core_reserver_a_media')}}/{{comic.media.id}}">Réserver </a>
+                    {% endif %}
+
+                    {% if comic.media.statut == 2 %}
+                        <p class="reserved">Réservé</p>
+                    {% endif %}
+
+                    {% if comic.media.statut == 3 %}
+                        <p class="notAvailable">Emprunté</p>
+                    {% endif %}
+                    {% if reqMedia is defined and reqMedia == comic.media.id %}
+
+                        {% if isSuccessfullyReserved == 0 %}
+                            <h5 class="res_succes">Ouvrage déjà réservé ou emprunté.</h5>
+                        {% elseif isSuccessfullyReserved == 1 %}
+                            <h5 class="res_echec">Erreur !</h5>
+                        {% elseif isSuccessfullyReserved == 2 %}
+                            <h5 class="res_echec">Réservation réussie !</h5>
+                        {% endif %}
+
+                    {% endif %}
+
+
+                </article>
+
+
+            {% endfor %}
+        </div>
     </section>
 
 

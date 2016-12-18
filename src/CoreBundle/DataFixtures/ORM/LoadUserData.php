@@ -27,16 +27,16 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface {
     }
 
     public function load(ObjectManager $manager) {
-        $listPrenom = array('Alain', 'Anne', 'Jean', 'Marie');
-        $listNames = array('Messager', 'Le Floc\'h', 'Le Goff', 'Le Gall');
-        foreach ($listNames as $name) {
+        $listFirstName = array('Alain', 'Anne', 'Jean', 'Marie');
+        $listLastNames = array('Messager', 'Le Floc\'h', 'Le Goff', 'Le Gall');
+       for  ($i = 0; $i < 3; $i++) {
             
                 $user = new User();
-                $user->setLastname($name);
-                $user->setPlainpassword($name);
+                $user->setLastname($listLastNames[$i]);
+                $user->setPlainpassword($listLastNames[$i]);
                                       
-                $user->setFirstname($name);
-                $user->setUsername($name);
+                $user->setFirstname($listFirstName[$i]);
+                $user->setUsername($listLastNames[$i]);
                 $password = $this->container->get('security.password_encoder')
                                             ->encodePassword($user, $user->getPlainPassword());
                 

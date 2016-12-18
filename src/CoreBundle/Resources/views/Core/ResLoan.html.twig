@@ -24,22 +24,36 @@
         <div>
 
             {% for res in Reservation %}
+                {% if res.borrowed == 0 %}
+                    <article>
+                        <div>
+                            <h4>{{res.media.title}}</h4><br/>
+                            <img src="{{asset('img/books')}}/{{res.media.cover}}" alt="{{res.media.title}}" width="205" height="340">
+                            <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                        </div>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <h4>Mes emprunts</h4>
+
+        {% for loan in Loan %}
+            {% if loan.isReturned == 0 %}
                 <article>
                     <div>
-                        <h4>{{res.media.title}}</h4></br>
-                        <img scr="" alt="{{res.media.title}}"></br>
-                        <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                        <h4>{{loan.media.title}}</h4><br/>
+                        <img scr="" alt="{{loan.media.title}}"><br/>
+                        <p>Emprunté le {{loan.getLoanDate|date('d-m-Y')}}.</p>
                     </div>
-                    
+
 
 
 
 
                 </article>
+            {% endif %}
+        {% endfor %}
 
-            {% endfor %}
-        </div>
-        <h4>Mes emprunts</h4>
         <div>
 
         </div>

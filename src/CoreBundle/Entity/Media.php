@@ -48,6 +48,16 @@ class Media
      * @ORM\Column(name="statut", type="integer", nullable=false)
      */
     private $statut;
+    
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="cover", type="string")
+     * 
+     */
+    
+    private $cover;
 
 
 
@@ -156,4 +166,13 @@ class Media
     {
         return $this->statut;
     }
+    function getCover() {
+        return $this->cover;
+    }
+
+    function setCover($cover) {
+        $this->cover = $cover;
+    }
+
+
 }

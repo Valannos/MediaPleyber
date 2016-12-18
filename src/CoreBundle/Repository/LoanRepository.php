@@ -5,6 +5,7 @@ namespace CoreBundle\Repository;
 use CoreBundle\Entity\Loan;
 use CoreBundle\Entity\Reservation;
 use CoreBundle\Entity\Media;
+use CoreBundle\Entity\User;
 
 /**
  * LoanRepository
@@ -40,6 +41,16 @@ class LoanRepository extends \Doctrine\ORM\EntityRepository {
         $em->persist($loan);
         $em->flush();
         return true;
+    }
+    
+    public function getUserLoans(User $user) {
+        
+         $qb = $this->createQueryBuilder('l')
+                ->where('l.user = :user')
+                ->setParameter('user', $user);
+
+        return $qb->getQuery()->getResult();
+        
     }
 
 }

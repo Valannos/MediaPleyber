@@ -24,9 +24,9 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="ISBN", type="string", length=30, nullable=false)
+     * @ORM\Column(name="genre", type="string", length=30, nullable=false)
      */
-    private $isbn;
+    private $genre;
 
     /**
      * @var string
@@ -64,22 +64,9 @@ class Book
      *
      * @return Book
      */
-    public function setIsbn($isbn)
-    {
-        $this->isbn = $isbn;
 
-        return $this;
-    }
 
-    /**
-     * Get isbn
-     *
-     * @return string
-     */
-    public function getIsbn()
-    {
-        return $this->isbn;
-    }
+
 
     /**
      * Set author
@@ -128,4 +115,13 @@ class Book
     {
         return $this->media;
     }
+    function getGenre() {
+        return $this->genre;
+    }
+
+    function setGenre($genre) {
+        $this->genre = $genre;
+    }
+
+
 }

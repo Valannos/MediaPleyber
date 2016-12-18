@@ -21,10 +21,10 @@
 
     <section>
         <div>
-        <h3>Gestionnaire d'emprunts</h3>
+            <h3>Gestionnaire d'emprunts</h3>
         </div>
         <div>
-        <h4>Réservations en attente</h4>
+            <h4>Réservations en attente</h4>
         </div>
         {% if isSuccessfullyBorrowed is defined and isSuccessfullyBorrowed == true %}
             <h5>Emprunt validé !</h5>
@@ -35,29 +35,34 @@
         <div class='gestion_reservation'>
 
             {% for res in Reservation %}
-                <article>
-                    <div>
-                        <h4>{{res.media.title}}</h4>
-                       
-                        <img scr="" alt="{{res.media.title}}">
-                        
-                        <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
-                    </div>
+                {% if res.statut == 1 %}
+                    <article>
+                        <div>
+                            <h4>{{res.media.title}}</h4>
+                            {% if res.media.type == 0 %}
+                                <img src="{{asset('img/books')}}/{{res.media.cover}}" alt="{{res.media.title}}" width="205" height="340">
+                            {% elseif res.media.type == 1 %}
+                                <img src="{{asset('img/cds')}}/{{res.media.cover}}" alt="{{res.media.title}}" width="250" height="250">
+                            {% elseif res.media.type == 2 %}
+                                <img src="{{asset('img/comics')}}/{{res.media.cover}}" alt="{{res.media.title}}"  width = "255" height="351" }>
+                            {% endif %}
+                            <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                        </div>
 
-                    <div>
-                        <a class="reservation" href="{{path('core_gestion_valid_loan')}}/{{res.id}}">Confirmer l'emprunt</a>
-                        <a class="annulation" href="">Annuler la réservation</a>
-                    </div>
+                        <div>
+                            <a class="reservation" href="{{path('core_gestion_valid_loan')}}/{{res.id}}">Confirmer l'emprunt</a>
+                            <a class="annulation" href="{{path('core_gestion_cancel_reservation')}}/{{res.id}}">Annuler la réservation</a>
+                        </div>
 
 
 
 
-                </article>
-
+                    </article>
+                {% endif %}
             {% endfor %}
         </div>
         <div>
-        <h4>Empunts en cours</h4>
+            <h4>Empunts en cours</h4>
         </div>
         <div class='gestion_reservation'>
             {% for loan in Loan %}
@@ -65,7 +70,13 @@
                     <article>
 
                         <h4>{{loan.media.title}}</h4></br>
-                        <img scr="" alt="{{loan.media.title}}"></br>
+                       {% if loan.media.type == 0 %}
+                                <img src="{{asset('img/books')}}/{{loan.media.cover}}" alt="{{loan.media.title}}" width="205" height="340">
+                            {% elseif loan.media.type == 1 %}
+                                <img src="{{asset('img/cds')}}/{{loan.media.cover}}" alt="{{loan.media.title}}" width="250" height="250">
+                            {% elseif loan.media.type == 2 %}
+                                <img src="{{asset('img/comics')}}/{{loan.media.cover}}" alt="{{loan.media.title}}"  width = "255" height="351" }>
+                            {% endif %}
                         <p>Emprunté le {{loan.loanDate|date('d-m-Y')}}.</p>
                         <p>Par : {{ loan.user.firstname ~' '~ loan.user.lastname }}</p>
                         <a class="reservation" href="{{path('core_gestion_valid_return')}}/{{loan.id}}">Confirmer le retour</a>
