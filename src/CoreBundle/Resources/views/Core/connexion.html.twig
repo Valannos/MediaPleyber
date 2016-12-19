@@ -2,7 +2,7 @@
 
 {% block stylesheet %}
 
-    <link rel="stylesheet" href="{{ asset('css/newContent.css') }}" />
+
     <link rel="stylesheet" href="{{ asset('css/formulars.css') }}" />
 
 {% endblock %}
@@ -26,20 +26,24 @@
     {% endif %}
 
     <section>
-        <h3>L'accès au catalogue et aux fonctionnalités de réservation nécessite d'être un utilisateur enregistré</h3>
+        <h3>L'accès au catalogue et aux fonctionnalités de réservation nécessite d'être un utilisateur enregistré.</h3>
         <form action='{{ path('login_check') }}' method = 'post'>
-            <div>
+            <div class="field">
                 <label for='username'>Identifiant</label>
                 <input type='text' id='username' name='_username' placeholder='Entrez votre identifiant'>
             </div>
-            <div>
+            <div class="field">
                 <label for='password'>Mot de passe</label>
                 <input type='password' id='password' name='_password'/>
 
             </div>
-            <div>
-                <input type='submit' value='Connexion'>
-                <input type='reset' value='Réinitialiser'>
+            
+            <div class="buttons_div">
+              
+                    <input type='submit' value='Connexion'>
+            
+                    <input type='reset' value='Réinitialiser'>
+             
             </div>
 
 

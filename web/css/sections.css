@@ -1,0 +1,198 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19 déc. 2016, 10:57:37
+    Author     : vanel
+*/
+
+/*SECTION*/
+
+section  {
+
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: 
+        #edeeef;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+section div {
+    display:
+        flex;
+    flex-direction: 
+        row;
+    flex-wrap: 
+        wrap;
+}
+
+
+section div article {
+
+    display: 
+        flex;
+    flex-direction: 
+        column;
+
+
+    border: 
+        2px
+        #ffbb10
+        solid;
+    border-radius:
+        10px
+        10px
+        ;
+    margin:
+        1em;
+    text-align: 
+        center;
+    padding:
+        0.5em;
+
+}
+
+
+
+
+
+article img {
+
+    align-self: center;
+
+}
+
+
+article:hover {
+
+    transition: 0.5s;
+    background-color: #878c95;
+
+}
+
+.available {
+
+    color:green;
+    font-weight: bold;
+
+}
+.reserved {
+    color:darkorange;
+    font-weight: bold;
+
+}
+
+.notAvailable {
+
+    color:red;
+    font-weight: bold;
+
+}
+.reservation, .annulation {
+
+
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin: 
+        1em;
+    border:
+        0.7px
+        #ffbb10
+        solid;
+    padding: 
+        1em;
+
+    background-color: 
+        #ffbb10;
+    transition:
+        0.5s;
+    opacity: 
+        1;
+    text-decoration: 
+        none;
+    border-radius: 
+        20px
+        20px;
+}
+.reservation:hover {
+    opacity: 
+        0.8;
+    color: 
+        green;
+
+}
+.annulation:hover {
+    opacity: 
+        0.8;
+    color:
+        red;
+
+
+}
+
+@media screen and (max-device-width: 1660px) {
+
+    section {
+        margin: 0.5em;
+    }
+
+    article img {
+
+        width: 82px;
+        height: 136px;
+
+    }
+
+    section div article {
+
+
+
+
+        padding:
+            0.2em;
+
+    }
+    section div {
+
+        flex-direction: 
+            column;
+        flex-wrap: 
+            wrap;
+    }
+
+    .reservation, .annulation {
+
+
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        margin: 
+            0.2em;
+        border:
+            0.7px
+            #ffbb10
+            solid;
+        padding: 
+            0.5em;
+
+        background-color: 
+            #ffbb10;
+        transition:
+            0.5s;
+        opacity: 
+            1;
+        text-decoration: 
+            none;
+        border-radius: 
+            20px
+            20px;
+    }
+
+
+}

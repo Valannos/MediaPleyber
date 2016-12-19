@@ -1,31 +1,59 @@
 {# empty Twig template #}
 
-<nav>
-
-    <a href=""><h3>Accueil</h3></a>
 
 
-    <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
 
+<nav class="dropdown">
 
+    <button id="nav_dropbtn" onclick="myFunction();" class="dropbtn">Menu</button>
     
+    <div id="myDropdown" class="dropdown-content">
+        
+        <a href="{{path('core_homepage')}}"><h3>Accueil</h3></a>
 
-    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
-    {% endif %}
+
+        <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
 
 
-    <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
 
-    <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations pratiques </h3></a>
-    {% if is_granted('ROLE_GESTION')  %}
-        <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations en cours</h3></a>
-    {% endif %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
-    {% endif %}
-    {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
-        <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes réservations et emprunts</h3></a>
-    {% endif %}
 
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
+                {% endif %}
+
+
+        <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
+
+        <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations pratiques </h3></a>
+        {% if is_granted('ROLE_GESTION')  %}
+            <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations en cours</h3></a>
+        {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
+                {% endif %}
+                {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
+            <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes réservations et emprunts</h3></a>
+        {% endif %}
+    </div>
 </nav>
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    var nav_dropbtn = document.getElementById('nav_dropbtn');
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
+</script>

@@ -15,11 +15,12 @@ use CoreBundle\Entity\Media;
 class MediaRepository extends \Doctrine\ORM\EntityRepository {
 
     public function getNewContent() {
-        $limitDate = new \DateTime();
-        $limitDate->
-                setDate(2016, 10, 1);
+        $date = new \DateTime();
+        $interval = new \DateInterval('P3M');
+        
 
-
+        $limitDate = $date->sub($interval);
+        var_dump($limitDate);
         $qb = $this->createQueryBuilder('m')
                 ->where('m.date > :date')
                 ->setParameter('date', $limitDate)
@@ -32,18 +33,15 @@ class MediaRepository extends \Doctrine\ORM\EntityRepository {
 
         return $res->getMedia();
     }
-    
+
     public function getMediaByLoan(\CoreBundle\Entity\Loan $loan) {
-        
+
         return $loan->getMedia();
-        
     }
-    
-    
 
     public function updateStatutToReserved($media, $newStatus) {
 
-        
+
         if ($media->getStatut() == 2 || $media->getStatut() == 3) {
             return false;
         } else {
@@ -66,11 +64,11 @@ class MediaRepository extends \Doctrine\ORM\EntityRepository {
             return true;
         }
     }
-    
+
     public function updateStatutToAvailable(Media $media, $newStatus) {
 
-       
-        if ($media->getStatut() == 1 ) {
+
+        if ($media->getStatut() == 1) {
             return false;
         } else {
             $media->setStatut($newStatus);

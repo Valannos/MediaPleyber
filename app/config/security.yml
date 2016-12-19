@@ -23,7 +23,15 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        
+        main_events:
+            anonymous: true
+            pattern: ^/events$
+            provider: main
+        main_homepage:
+            anonymous: true
+            pattern: ^/homepage$
+            provider: main
         main_login:
             anonymous: true
             pattern: ^/login$

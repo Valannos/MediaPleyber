@@ -23,6 +23,7 @@ class CoreController extends Controller {
 
 
         $newContent = $this->getMediaRepository()->getNewContent();
+        
         return $this->render('CoreBundle:Core:newContent.html.twig', array('newContent' => $newContent));
     }
 
@@ -87,7 +88,7 @@ class CoreController extends Controller {
         $media = $this->getMediaRepository()->find($media_id);
         $update = $this->getMediaRepository()->updateStatutToReserved($media, 2);
         $books = $this->getBookRepository()->findAll();
-         $catalogue = $this->getMediaRepository()->findAll();
+        $catalogue = $this->getMediaRepository()->findAll();
         if (!$update) {
 
             return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 0, 'reqMedia' => $media_id, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
@@ -158,9 +159,10 @@ class CoreController extends Controller {
         $allLoan = $this->getLoanRepository()->findAll();
         $allRes = $this->getReservationRepository()->getReservationsWithoutEffectiveLoan();
         $res = $this->getReservationRepository()->find($res_id);
-        dump($res);
-        if ($res->getStatut() == 1) {
 
+        if ($res->getStatut() == 1) {
+            $currentMedia = $res->getMedia();
+            $this->getMediaRepository()->updateStatutToAvailable($currentMedia, 1);
             $res->setStatut(0);
             $this->getDoctrine()->getManager()->persist($res);
             $this->getDoctrine()->getManager()->flush();

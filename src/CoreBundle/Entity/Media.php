@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="media")
  * @ORM\Entity(repositoryClass = "CoreBundle\Repository\MediaRepository")
  */
-class Media
-{
+class Media {
+
     /**
      * @var integer
      *
@@ -48,26 +48,21 @@ class Media
      * @ORM\Column(name="statut", type="integer", nullable=false)
      */
     private $statut;
-    
-    
+
     /**
      * @var string
      * 
      * @ORM\Column(name="cover", type="string")
      * 
      */
-    
     private $cover;
-
-
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -78,8 +73,7 @@ class Media
      *
      * @return Media
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -90,8 +84,7 @@ class Media
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -102,8 +95,7 @@ class Media
      *
      * @return Media
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type;
 
         return $this;
@@ -114,8 +106,7 @@ class Media
      *
      * @return integer
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
@@ -126,8 +117,7 @@ class Media
      *
      * @return Media
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -138,8 +128,7 @@ class Media
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -150,8 +139,7 @@ class Media
      *
      * @return Media
      */
-    public function setStatut($statut)
-    {
+    public function setStatut($statut) {
         $this->statut = $statut;
 
         return $this;
@@ -162,17 +150,30 @@ class Media
      *
      * @return integer
      */
-    public function getStatut()
-    {
+    public function getStatut() {
         return $this->statut;
     }
+
+    /**
+     * Get cover
+     *
+     * @return string
+     */
     function getCover() {
         return $this->cover;
     }
 
+    /**
+     * Set cover
+     *
+     * @param string $cover
+     *
+     * @return Media
+     */
     function setCover($cover) {
         $this->cover = $cover;
     }
+
 
 
 }

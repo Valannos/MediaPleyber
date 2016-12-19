@@ -7,20 +7,25 @@
 
             <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Sans" rel="stylesheet"> 
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('css/navbar.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/sections.css') }}" />
+             <link rel="stylesheet" href="{{ asset('css/header.css') }}" />
 
         {% endblock %}
+        
         {% block stylesheet %}
-
-        {% endblock %}
+            
+            {% endblock %}
+        
     </head>
     <body>
         {% block header %}
             <header>
                 <div>
                     <img src="{{asset('img/contenu_logo_pleyber.gif')}}" alt="logo_pleyber" title="Ville de Pleyber">
-                </div>
-                <div>
+
                     <img src="{{asset('img/contenu_2_q60.jpg')}}" alt="logo_pleyber_media" title="Mediathèque de Pleyber">
+                    <h1>Médiathèque de Pleyber-Christ</h1>
                 </div>
                 <div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}

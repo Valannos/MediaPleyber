@@ -2,8 +2,8 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheet %}
-    
- <link rel="stylesheet" href="{{ asset('css/Info.css') }}" />
+
+
 {% endblock %}
 
 {% block header %}
@@ -23,11 +23,26 @@
 {% block section %}
 
     <section>
+        <h3>Localisation</h3>
         <article>
-            <h2>Localisation</h2>
+            
+            
+            <div id="map" width="400" height = "400">GoogleMap</div>
+            <script>
+               /* function myMap() {
+                    var mapCanvas = document.getElementById("map");
+                    var mapOptions = {
+                        center: new google.maps.LatLng(48.5087406, -3.8894754),
+                        zoom: 10
+                    };
+                    var map = new google.maps.Map(mapCanvas, mapOptions);
+                }*/
+            </script>
+            <script src=""></script>
         </article>
+        <h3>Horaires</h3>
         <article>
-            <h2>Horaires</h2>
+            <h3>Contact</h3>
         </article>
 
 

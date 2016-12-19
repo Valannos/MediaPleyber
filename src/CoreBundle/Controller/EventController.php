@@ -11,6 +11,8 @@ namespace CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+
+
 /**
  * Description of EventController
  *
@@ -18,9 +20,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class EventController extends Controller {
 
-    //put your code here
+   
 
     public function displaysEventAction() {
+        
+        
+        
 
         $events = $this->getDoctrine()
                 ->getManager()

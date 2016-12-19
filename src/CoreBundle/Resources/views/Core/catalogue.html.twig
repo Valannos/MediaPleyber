@@ -2,7 +2,7 @@
 {% extends "base.html.twig" %}
 {% block stylesheet %}
 
-    <link rel="stylesheet" href="{{ asset('css/newContent.css') }}" />
+   
 {% endblock %}
 {% block header %}
 
@@ -22,7 +22,7 @@
     <section>
 
         {# DISPLAYS BOOKS LIST #}
-        <h2>Livres</h2>
+        <h3>Livres</h3>
         <div>
 
             {% for book in books %}
@@ -129,7 +129,7 @@
 
                 <article>
                     <h4>{{comic.media.title}}</h4>
-                    <img src="{{asset('img/comics')}}/{{comic.media.cover}}" alt="{{comic.media.title}}"  width = "255" height="351" }>
+                    <img src="{{asset('img/comics')}}/{{comic.media.cover}}" alt="{{comic.media.title}}"  width = "255" height="351" >
 
 
                     <p>Scénario : {{comic.author}}</p>

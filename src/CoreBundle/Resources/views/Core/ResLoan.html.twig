@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block stylesheet %}
 
-    <link rel="stylesheet" href="{{ asset('css/MyResandLoans.css') }}" />
+  
 {% endblock %}
 {% block header %}
 
@@ -20,41 +20,34 @@
 {% block section %}
 
     <section>
-        <h4>Mes Réservations</h4>
+        <h3>Mes Réservations</h3>
         <div>
 
             {% for res in Reservation %}
-                {% if res.borrowed == 0 %}
+                {% if res.borrowed == 0 and res.statut == 1%}
                     <article>
-                        <div>
-                            <h4>{{res.media.title}}</h4><br/>
-                            <img src="{{asset('img/books')}}/{{res.media.cover}}" alt="{{res.media.title}}" width="205" height="340">
-                            <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
-                        </div>
+
+                        <h4>{{res.media.title}}</h4>
+                        <img src="{{asset('img/books')}}/{{res.media.cover}}" alt="{{res.media.title}}" width="205" height="340">
+                        <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+
                     </article>
                 {% endif %}
             {% endfor %}
         </div>
-        <h4>Mes emprunts</h4>
-
-        {% for loan in Loan %}
-            {% if loan.isReturned == 0 %}
-                <article>
-                    <div>
-                        <h4>{{loan.media.title}}</h4><br/>
-                        <img scr="" alt="{{loan.media.title}}"><br/>
-                        <p>Emprunté le {{loan.getLoanDate|date('d-m-Y')}}.</p>
-                    </div>
-
-
-
-
-
-                </article>
-            {% endif %}
-        {% endfor %}
-
+        <h3>Mes emprunts</h3>
         <div>
+            {% for loan in Loan %}
+                {% if loan.isReturned == 0 %}
+                    <article>
+
+                        <h4>{{loan.media.title}}</h4>
+                        <img src="{{asset('img/books')}}/{{loan.media.cover}}" alt="{{loan.media.title}}" width="205" height="340"><br/>
+                        <p>Emprunté le {{loan.getLoanDate|date('d-m-Y')}}.</p>
+
+                    </article>
+                {% endif %}
+            {% endfor %}
 
         </div>
 

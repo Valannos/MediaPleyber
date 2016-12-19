@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block stylesheet %}
 
-    <link rel="stylesheet" href="{{ asset('css/newContent.css') }}" />
-{% endblock %}
+
 {% block header %}
 
     {{ parent() }}
@@ -13,12 +11,19 @@
 
     {% include 'CoreBundle:Core:navbar.html.twig' %}
 
-    <button id="event">Cliquez pour obtenir les futurs évènements</button>
-    <p id="json0"></p>
-    <p id="json1"></p>
+
 
 
 {% endblock %}
+
+{% block section %}
+    <section>
+        <button id="event">Cliquez pour obtenir les futurs évènements</button>
+        <p id="json0"></p>
+        <p id="json1"></p>
+    </section>
+{% endblock %}
+
 
 {% block javascripts %}
 
