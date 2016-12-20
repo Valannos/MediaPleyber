@@ -2,7 +2,7 @@
 {% extends "base.html.twig" %}
 {% block stylesheet %}
 
-   
+
 {% endblock %}
 {% block header %}
 
@@ -22,8 +22,10 @@
     <section>
 
         {# DISPLAYS BOOKS LIST #}
-        <h3>Livres</h3>
-        <div>
+        
+            <h3>Livres</h3>
+        
+        <div id="books_block">
 
             {% for book in books %}
 
@@ -172,5 +174,13 @@
         </div>
     </section>
 
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+
+    </script>
 
 {% endblock %}

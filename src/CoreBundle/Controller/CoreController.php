@@ -8,6 +8,7 @@ use CoreBundle\Repository\MediaRepository;
 use CoreBundle\Repository\LoanRepository;
 use Doctrine\ORM\EntityRepository;
 use CoreBundle\Repository\ReservationRepository;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CoreController extends Controller {
     /* ++++++++++++++ACCESS METHODS+++++++++++++++ */
@@ -23,7 +24,7 @@ class CoreController extends Controller {
 
 
         $newContent = $this->getMediaRepository()->getNewContent();
-        
+
         return $this->render('CoreBundle:Core:newContent.html.twig', array('newContent' => $newContent));
     }
 
@@ -124,7 +125,7 @@ class CoreController extends Controller {
 
     public function validLoanAction($res_id) {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
-            throw $this->createAccessDeniedException();
+            throw new AccessDeniedException('Accès réservé aux gestionnaires');
         }
 
 
@@ -153,12 +154,13 @@ class CoreController extends Controller {
     }
 
     public function cancelReservationAction($res_id) {
-        if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
-            throw $this->createAccessDeniedException();
+        $res = $this->getReservationRepository()->find($res_id);
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION') && $res->getUser() != $this->get('security.token_storage')->getToken()->getUser()) {
+            throw new AccessDeniedException('Accès interdit !');
         }
         $allLoan = $this->getLoanRepository()->findAll();
         $allRes = $this->getReservationRepository()->getReservationsWithoutEffectiveLoan();
-        $res = $this->getReservationRepository()->find($res_id);
+
 
         if ($res->getStatut() == 1) {
             $currentMedia = $res->getMedia();
@@ -166,7 +168,11 @@ class CoreController extends Controller {
             $res->setStatut(0);
             $this->getDoctrine()->getManager()->persist($res);
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('core_reservation', array('Reservation' => $allRes, 'Loan' => $allLoan));
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
+                return $this->redirectToRoute('core_reservation', array('Reservation' => $allRes, 'Loan' => $allLoan));
+            } else {
+                return $this->redirectToRoute('core_user_res_and_load');
+            }
         }
     }
 
@@ -200,6 +206,24 @@ class CoreController extends Controller {
             $this->getLoanRepository()->changeIsReturnedState($loan);
 
             return $this->redirectToRoute('core_reservation', array('Reservation' => $allRes, 'Loan' => $allLoan, 'isSuccessfullyBorrowed' => true));
+        }
+    }
+
+    public function cancelReservationAsUserAction($res_id) {
+        $res = $this->getReservationRepository()->find($res_id);
+        if ($res->getUser() != $this->get('security.token_storage')->getToken()->getUser()) {
+            throw new AccessDeniedException('Vous n\'êtes pas celui ou celle qui a réservé ce document');
+        }
+
+
+        if ($res->getStatut() == 1) {
+            $currentMedia = $res->getMedia();
+            $this->getMediaRepository()->updateStatutToAvailable($currentMedia, 1);
+            $res->setStatut(0);
+            $this->getDoctrine()->getManager()->persist($res);
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('core_user_res_and_load');
         }
     }
 

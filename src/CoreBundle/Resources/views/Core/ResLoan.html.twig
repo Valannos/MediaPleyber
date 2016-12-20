@@ -30,6 +30,7 @@
                         <h4>{{res.media.title}}</h4>
                         <img src="{{asset('img/books')}}/{{res.media.cover}}" alt="{{res.media.title}}" width="205" height="340">
                         <p>Réservé le {{res.date|date('d-m-Y')}}.</p>
+                        <a class="annulation" href="{{path('core_user_cancel_reservation')}}/{{res.id}}">Annuler la réservation</a>
 
                     </article>
                 {% endif %}

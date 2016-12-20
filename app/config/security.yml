@@ -24,29 +24,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         
-        main_events:
-            anonymous: true
-            pattern: ^/events$
-            provider: main
-        main_homepage:
-            anonymous: true
-            pattern: ^/homepage$
-            provider: main
-        main_login:
-            anonymous: true
-            pattern: ^/login$
-            provider: main
-        main_nouveautes:
-            anonymous: true
-            pattern: ^/nouveautes
-            provider: main
-        main_infos:
-            anonymous: true
-            pattern: ^/infos$
-            provider: main
+        
+      
         main:
             pattern: ^/
-            anonymous: false
+            
             provider: main
             http_basic: ~
             form_login:
@@ -56,8 +38,15 @@ security:
             logout:
                 path: logout
                 target: core_homepage
-                
-          
+            anonymous: true
+            
+    access_control:
+        - { path: ^/logged/, roles: ROLE_REGISTERED }
+        - { path: ^/gestion/, roles: ROLE_GESTION }
+        - { path: ^/public/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/public/, roles: ROLE_REGISTERED  }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout, roles: ROLE_REGISTERED }
             # activate different ways to authenticate
 
             # http_basic: ~

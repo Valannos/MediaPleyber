@@ -10,6 +10,12 @@ and open the template in the editor.
 
 /*SECTION*/
 
+.hidden {
+    
+    display: none;
+    
+}
+
 section  {
 
     text-align: center;
@@ -136,7 +142,7 @@ article:hover {
 
 }
 
-@media screen and (max-device-width: 1660px) {
+@media screen and (max-device-width: 1024px) {
 
     section {
         margin: 0.5em;

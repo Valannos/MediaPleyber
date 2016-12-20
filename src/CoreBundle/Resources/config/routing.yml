@@ -1,24 +1,24 @@
 core_homepage:
-    path:     /homepage
+    path:     /public/homepage
     defaults: { _controller: CoreBundle:Core:home }
     
 core_newcontent:
-    path: /nouveautes
+    path: /public/nouveautes
     defaults:
         _controller: CoreBundle:Core:newContent
         
 core_additionnal_informations:
-    path: /infos
+    path: /public/infos
     defaults:
         _controller: CoreBundle:Core:accessInfos
         
 core_catalogue:
-    path: /catalogue
+    path: /logged/catalogue
     defaults:
         _controller: CoreBundle:Core:accessCatalogue
 
 core_event:
-    path: /events
+    path: /public/events
     defaults:
         _controller: CoreBundle:Event:displaysEvent
         
@@ -28,13 +28,13 @@ core_reservation:
         _controller: CoreBundle:Core:manageReservation
 
 core_reserver_a_media:
-    path: /catalogue/reserve/{media_id}
+    path: /logged/catalogue/reserve/{media_id}
     defaults:
         _controller: CoreBundle:Core:reserveMedia
         media_id: -1
         
 core_user_res_and_load:
-    path: /MesResEtEmprunts
+    path: /logged/MesReservationsEtEmprunts
     defaults:
         _controller: CoreBundle:Core:getUserMedia
 
@@ -57,7 +57,11 @@ core_gestion_valid_return:
         loan_id: -1
         
     
-        
+core_user_cancel_reservation:
+    path: /logged/reservations/cancel/{res_id}
+    defaults:
+        _controller: CoreBundle:Core:cancelReservationAsUser
+        res_id: -1        
 
 
 login:
