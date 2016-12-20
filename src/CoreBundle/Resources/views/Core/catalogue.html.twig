@@ -52,7 +52,8 @@
 
                     {% if book.media.statut == 1 %}
                         <p class="available">Disponible</p>
-                        <a class="reservation" href="{{path('core_reserver_a_media')}}/{{book.media.id}}">Réserver </a>
+                        <a class="reservation large" href="{{path('core_reserver_a_media')}}/{{book.media.id}}">Réserver </a>
+                        <a class="reservation small" href="{{path('core_reserver_a_media')}}/{{book.media.id}}">Réserver </a>
                     {% endif %}
 
                     {% if book.media.statut == 2 %}

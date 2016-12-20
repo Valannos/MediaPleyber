@@ -34,13 +34,15 @@ nav div  {
         1em;
 
 }
-
-nav div a  {
+nav div a {
+      text-decoration: none;
+}
+nav div a  h3 {
     font-family: 'Noto Sans', sans-serif;
 
     font-weight: bold;
     color: black;
-
+  
     margin: 
         0.3em;
 
@@ -56,7 +58,7 @@ nav div a  {
     text-decoration: none;
 
 }
-nav div a :hover {
+nav div a h3:hover {
     opacity: 
         0.8;
     color:
