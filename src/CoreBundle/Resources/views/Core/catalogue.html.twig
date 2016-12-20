@@ -19,12 +19,19 @@
 {% endblock %}
 
 {% block section %}
+
     <section>
+        <aside> 
+            <button id="books_btn">Livres</button>
+            <button id="cds_btn">CDs</button>
+            <button id="comics_btn">Bandes-dessinées</button>
+            
+        </aside>
 
         {# DISPLAYS BOOKS LIST #}
-        
-            <h3>Livres</h3>
-        
+
+        <h3> Livres </h3>
+
         <div id="books_block">
 
             {% for book in books %}
@@ -75,7 +82,7 @@
         </div>
         {# DISPLAYS CDs LIST #}
         <h2>CDs</h2>
-        <div>
+        <div id="cds_block">
 
             {% for cd in Cd %}
 
@@ -125,7 +132,7 @@
 
         {# DISPLAYS COMICS LIST #}
         <h2>Bandes-dessinées</h2>
-        <div>
+        <div id="comics_block">
 
             {% for comic in Comics %}
 
@@ -180,6 +187,38 @@
 {% block javascripts %}
     <script>
 
+        var book_btn = document.getElementById("books_btn");
+
+        book_btn.onclick = function () {
+
+            document.getElementById("books_block").classList.toggle("hidden");
+            book_btn.classList.toggle("aside_btn_hidden");
+
+
+        };
+
+
+        var CD_btn = document.getElementById("cds_btn");
+
+        CD_btn.onclick = function () {
+
+            document.getElementById("cds_block").classList.toggle("hidden");
+
+            CD_btn.classList.toggle("aside_btn_hidden");
+
+
+        };
+
+        var comics_btn = document.getElementById("comics_btn");
+
+        comics_btn.onclick = function () {
+
+            document.getElementById("comics_block").classList.toggle("hidden");
+
+            comics_btn.classList.toggle("aside_btn_hidden");
+
+
+        };
 
     </script>
 

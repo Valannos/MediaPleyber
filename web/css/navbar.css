@@ -23,7 +23,7 @@ nav div  {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items:stretch;
+    align-content:center;
     text-align:center;
     text-decoration: none;
     width: auto;
@@ -34,9 +34,7 @@ nav div  {
         1em;
 
 }
-nav div a {
-    text-decoration: none;
-}
+
 nav div a  {
     font-family: 'Noto Sans', sans-serif;
 
@@ -45,105 +43,109 @@ nav div a  {
 
     margin: 
         0.3em;
-    border:
-        1px
-        #ffbb10
-        solid;
+
     padding: 
         1em;
 
     background-color: 
         #ffbb10;
     transition:
-        0.5s;
+        0.8s;
     opacity: 
         1;
+    text-decoration: none;
 
 }
 nav div a :hover {
     opacity: 
         0.8;
+    color:
+        white;
 
 
 }
 
-nav div a :hover {
-    color:white;
 
-}
 
-.dropbtn {
+
+
+
+
+
+
+.smartphone_toolbar {
+
     display: none;
-}
 
-
-/*
-
-2) ACTIVE 
-
-*/
-
-.current_page {
-    color:white;
 }
 
 /*SMARTPHONE*/
 
-@media screen and (max-device-width: 1024px) {
-
-    .dropbtn {
-
-        display: block;
-        background-color: #ffbb10;
-        color: black;
-        padding: 2em;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-
+@media screen and (max-width: 640px) {
+    * {
+        font-size:small;
     }
-    .dropbtn:hover, .dropbtn:focus {
-        color: white;
-    }
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-    .dropdown-content {
+    .desktop_toolbar {
+
         display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
+    .smartphone_toolbar {
+
+    display: flex;
+    flex-direction: column;
    
-    .show {display:block;}
 
-    nav {
-        flex-direction: column;
-        background-color: white;
+}
+ 
+
+
+   
+
+
+    .icon-bar {
+        width: 100%;
+        text-align: center;
+        background-color: #555;
+        overflow: auto;
+        display: flex;
+        justify-content:center;
     }
-    nav div a {
-        margin: 
-            0.5em;
 
-        padding: 
-            1em;
+    .icon-bar a {
+        width: 20%;
+        padding: 12px 0;
+        float: left;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 36px;
     }
-    nav {
 
-        margin:
-            0em;
-        padding: 
-            0em;
-
+    .icon-bar a:hover {
+        background-color: #edeeef;
+        color: #ffbb10;
     }
+
+    .active {
+        background-color: #4CAF50;
+    }
+    
+    .gestion:hover {
+        
+        
+        color: red;
+    }
+  
+        
+        
+        
+    
+
+
+
+
+
+
+
 
 
 }

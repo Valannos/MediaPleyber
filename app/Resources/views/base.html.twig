@@ -9,40 +9,29 @@
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('css/navbar.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/sections.css') }}" />
-             <link rel="stylesheet" href="{{ asset('css/header.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/header.css') }}" />
 
         {% endblock %}
-        
+
         {% block stylesheet %}
-            
-            {% endblock %}
-        
+
+        {% endblock %}
+
     </head>
     <body>
         {% block header %}
             <header>
                 <div>
                     <img src="{{asset('img/contenu_logo_pleyber.gif')}}" alt="logo_pleyber" title="Ville de Pleyber">
-
-                    <img src="{{asset('img/contenu_2_q60.jpg')}}" alt="logo_pleyber_media" title="Mediathèque de Pleyber">
-                    <h1>Médiathèque de Pleyber-Christ</h1>
                 </div>
                 <div>
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-                        {% if is_granted('ROLE_GESTION') %}
-                            <p class="gestion">
-                                Bienvenue, {{app.user}}
-
-                            </p>
-                        {% else %}
-                            <p class="registered" >
-                                Bienvenue, {{app.user}}
-                            </p>
-                        {% endif %}
-
-                    {% endif %}
+                    <img src="{{asset('img/contenu_2_q60.jpg')}}" alt="logo_pleyber_media" title="Mediathèque de Pleyber">
                 </div>
+                <div>
+                    <h1>Médiathèque de Pleyber-Christ</h1>
+                </div>
+
+
             </header>
 
 
@@ -52,7 +41,7 @@
         {% block section %} {% endblock %}
     {% block javascripts %}{% endblock %}
     {% block footer %}
-        
+
     {% endblock %}
 </body>
 </html>

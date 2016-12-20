@@ -3,57 +3,168 @@
 
 
 
-<nav class="dropdown">
-
-    <button id="nav_dropbtn" onclick="myFunction();" class="dropbtn">Menu</button>
-    
-    <div id="myDropdown" class="dropdown-content">
-        
-        <a href="{{path('core_homepage')}}"><h3>Accueil</h3></a>
-
-
-        <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
+<nav class="desktop_toolbar">
+    <div>
 
 
 
+        {# Following field will only be displayed if a valid user is logged #}
 
-        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
-                {% endif %}
-
-
-        <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
-
-        <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations pratiques </h3></a>
-        {% if is_granted('ROLE_GESTION')  %}
-            <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations en cours</h3></a>
-        {% endif %}
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
-                {% endif %}
-                {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
+        {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
             <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes réservations et emprunts</h3></a>
         {% endif %}
-    </div>
-</nav>
 
-<script>
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
+        {% if is_granted('ROLE_GESTION')  %}
+            <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations et Emprunts</h3></a>
+        {% endif %}
 
-    var nav_dropbtn = document.getElementById('nav_dropbtn');
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+
+            <a href="{{ path('logout')}}">{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                {% if is_granted('ROLE_GESTION') %}
+                    <h3 class="gestion">
+                        {{app.user}}
+
+
+                    {% else %}
+                        <h3 class="registered" >
+                            {{app.user}}
+
+                        {% endif %}
+
+                    {% endif %}  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
+                    {% endif %}
+
+
+        </div>
+
+
+        <div >
+
+            <a href="{{path('core_homepage')}}"><h3>Accueil</h3></a>
+
+
+            <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
+
+
+
+
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
+                    {% endif %}
+
+
+            <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
+
+
+
+            <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations pratiques </h3></a>
+
+            {# 
+    
+            {% if is_granted('ROLE_GESTION')  %}
+                <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations et Emprunts</h3></a>
+            {% endif %}
+    #}
+            {# Following field will only be displayed if a valid user is logged #}
+
+
+            {#   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                   <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
+                       {% endif %} #}
+
+            {# Following field will only be displayed if a valid user is logged #}
+
+
+        </div>
+    </nav>
+
+
+    <div class="smartphone_toolbar">
+
+
+        <div class="icon-bar">
+
+            {# Following field will only be displayed if a valid user is logged #}
+
+            {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
+                <a href="{{ path('core_user_res_and_load')}}" title="Accéder à vos réservations et emprunts"><i class="fa fa-leanpub" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if is_granted('ROLE_GESTION')  %}
+                <a class="gestion" href="{{path('core_reservation')}}" title="Gérer les emprunts et réservations"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+                <a href="{{ path('logout')}}" title="Quitter la session {{app.user}}"><i class="fa fa-user-times" aria-hidden="true"></i></span></a>
+
+            {% endif %}
+
+
+        </div>
+
+
+        <div class="icon-bar">
+
+            <a href="{{path('core_homepage')}}" title="Accueil"><i class="fa fa-home"></i></a>
+
+
+            <a href="{{path('core_newcontent')}}" title="Nouveautés"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+
+
+
+
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('login')}}" title="Se connecter"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+            {% endif %}
+
+
+            <a href="{{path('core_catalogue')}}" title="Consulter le catalogue"><i class="fa fa-book" aria-hidden="true"></i></a>
+
+
+
+            <a href="{{ path('core_additionnal_informations') }}" title="Informations"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+
+            {# 
+    
+            {% if is_granted('ROLE_GESTION')  %}
+                <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations et Emprunts</h3></a>
+            {% endif %}
+    #}
+            {# Following field will only be displayed if a valid user is logged #}
+
+
+            {#   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                   <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
+                       {% endif %} #}
+
+            {# Following field will only be displayed if a valid user is logged #}
+
+
+        </div>
+    </div>   
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        var nav_dropbtn = document.getElementById('nav_dropbtn');
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
-        }
-    };
-</script>
+        };
+    </script>

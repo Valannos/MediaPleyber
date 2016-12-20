@@ -11,7 +11,7 @@ and open the template in the editor.
 header {
 
     display: flex;
-    flex-direction: row;
+
     flex-wrap:wrap;
      font-family: 
         'Noto Sans', sans-serif;
@@ -30,12 +30,17 @@ header {
         'Noto Sans', sans-serif;
 }
 
-@media screen and (max-device-width: 1024px) {
+@media screen and (max-width: 640px) {
     
     header {
-        
+       
          flex-direction: column;
          align-items: center;
+        
+    }
+    header div {
+        
+      
         
     }
     
