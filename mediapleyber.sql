@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Mar 20 Décembre 2016 à 16:52
--- Version du serveur :  5.7.16-0ubuntu0.16.04.1
--- Version de PHP :  7.0.8-0ubuntu0.16.04.3
+-- Client :  127.0.0.1
+-- Généré le :  Mer 21 Décembre 2016 à 21:04
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `mediapleyber`
+-- Base de données :  `mediaplayber`
 --
 
 -- --------------------------------------------------------
@@ -38,10 +38,10 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `id_media`, `genre`, `author`) VALUES
-(1, 29, 'Fantasy', 'J.R.R Tolkien'),
-(2, 30, 'Fantastique', 'Kafka'),
-(3, 31, 'Autobiographie', 'Jean-Paule Sartre'),
-(4, 33, 'Fantastique', 'Guy de Maupassant');
+(1, 1, 'Fantasy', 'J.R.R Tolkien'),
+(2, 2, 'Fantastique', 'Kafka'),
+(3, 3, 'Roman autobiographique', 'Jean-Paule Sartre'),
+(4, 5, 'Fantastique', 'Guy de Maupassant');
 
 -- --------------------------------------------------------
 
@@ -61,9 +61,10 @@ CREATE TABLE `cd` (
 --
 
 INSERT INTO `cd` (`id`, `id_media`, `author`, `genre`) VALUES
-(1, 34, 'Venom', 'Heavy Metal'),
-(2, 35, 'Antonio Vivaldi', 'Musique Baroque'),
-(3, 36, 'Georges Brassens', 'Chanson Française');
+(1, 6, 'Venom', 'Heavy Metal'),
+(2, 7, 'Antonio Vivaldi', 'Musique Baroque'),
+(3, 8, 'Georges Brassens', 'Chanson Française'),
+(4, 10, 'The Beatles', 'Rock');
 
 -- --------------------------------------------------------
 
@@ -83,8 +84,9 @@ CREATE TABLE `comic` (
 --
 
 INSERT INTO `comic` (`id`, `author`, `drawer`, `media_id`) VALUES
-(1, 'Goscinny', 'Uderzo', 32),
-(2, 'Hergé', 'Hergé', 37);
+(1, 'Goscinny', 'Uderzo', 4),
+(2, 'Hergé', 'Hergé', 9),
+(3, 'René Pétillon', 'René Pétillon', 11);
 
 -- --------------------------------------------------------
 
@@ -105,8 +107,8 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `title`, `description`, `lieu`, `date`) VALUES
-(39, 'Bourse aux livres', 'Vente de livres pour la rentrée 2017, niveau lycée et supérieur', 'Mediathèque de Pleyber', '2017-08-20 14:00:00'),
-(40, 'Lectures de Noël', 'Lecture de contes de Noël pour les tout-petits', 'Mediathèque de Pleyber', '2017-12-20 16:00:00');
+(19, 'Bourse aux livres', 'Vente de livres pour la rentrée 2017, niveau lycée et supérieur', 'Mediathèque de Pleyber', '2017-08-20 14:00:00'),
+(20, 'Lectures de Noël', 'Lecture de contes de Noël pour les tout-petits', 'Mediathèque de Pleyber', '2017-12-20 16:00:00');
 
 -- --------------------------------------------------------
 
@@ -122,19 +124,6 @@ CREATE TABLE `loan` (
   `media_id` int(11) DEFAULT NULL,
   `isReturned` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `loan`
---
-
-INSERT INTO `loan` (`id`, `return_date`, `loan_date`, `user_id`, `media_id`, `isReturned`) VALUES
-(21, '2016-12-19', '2016-12-19', 22, 30, 1),
-(22, '2016-12-20', '2016-12-19', 22, 31, 1),
-(23, '2016-12-20', '2016-12-19', 22, 30, 1),
-(24, '2016-12-20', '2016-12-20', 24, 29, 1),
-(25, '2016-12-20', '2016-12-20', 23, 30, 1),
-(26, NULL, '2016-12-20', 23, 33, 0),
-(27, NULL, '2016-12-20', 24, 29, 0);
 
 -- --------------------------------------------------------
 
@@ -156,15 +145,17 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`title`, `type`, `date`, `id`, `statut`, `cover`) VALUES
-('Le Seigneur des Anneaux - Les Deux Tours', 0, '2016-10-06 00:00:00', 29, 3, 'deux_tour_1.jpeg'),
-('La méthamorphose', 0, '2016-10-02 00:00:00', 30, 2, 'meta_kafka.jpg'),
-('Les Mots', 0, '2016-04-19 00:00:00', 31, 2, 'les_mots_sartre.jpg'),
-('Asterix chez les Helvètes', 2, '2016-05-26 00:00:00', 32, 1, 'asterix_helvetes_cover.jpg'),
-('Le Horla', 0, '2016-04-18 00:00:00', 33, 3, 'horlacouv-couleur.jpg'),
-('Black Metal', 1, '2016-08-17 00:00:00', 34, 1, 'black_metal_cover.jpg'),
-('Suites pour Violoncelles', 1, '2016-10-05 00:00:00', 35, 1, 'cello_vivaldi.jpg'),
-('Mourir pour des idées', 1, '2015-02-18 00:00:00', 36, 1, 'brassens_mourir_pour_des_idees.jpg'),
-('Objectif Lune', 2, '2015-02-03 00:00:00', 37, 1, 'herge-objectif_lune.jpg');
+('Le Seigneur des Anneaux - Les Deux Tours', 0, '2016-10-06 00:00:00', 1, 1, 'deux_tour_1.jpeg'),
+('La méthamorphose', 0, '2016-10-02 00:00:00', 2, 1, 'meta_kafka.jpg'),
+('Les Mots', 0, '2016-04-19 00:00:00', 3, 1, 'les_mots_sartre.jpg'),
+('Astérix chez les Helvètes', 2, '2016-05-26 00:00:00', 4, 1, 'asterix_helvetes_cover.jpg'),
+('Le Horla', 0, '2016-04-18 00:00:00', 5, 1, 'horlacouv-couleur.jpg'),
+('Black Metal', 1, '2016-08-17 00:00:00', 6, 1, 'black_metal_cover.jpg'),
+('Suites pour Violoncelles', 1, '2016-10-05 00:00:00', 7, 1, 'cello_vivaldi.jpg'),
+('Mourir pour des idées', 1, '2015-02-18 00:00:00', 8, 1, 'brassens_mourir_pour_des_idees.jpg'),
+('Objectif Lune', 2, '2015-02-03 00:00:00', 9, 1, 'herge-objectif_lune.jpg'),
+('The Beatles', 1, '2016-12-20 00:00:00', 10, 1, 'The_White_Album.svg.png'),
+('L\'enquête corse', 2, '2016-12-07 00:00:00', 11, 1, 'enquete_corse.jpg');
 
 -- --------------------------------------------------------
 
@@ -180,54 +171,6 @@ CREATE TABLE `reservation` (
   `statut` tinyint(1) NOT NULL,
   `borrowed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `reservation`
---
-
-INSERT INTO `reservation` (`user_id`, `media_id`, `date`, `id`, `statut`, `borrowed`) VALUES
-(22, 33, '2016-12-19', 40, 0, 0),
-(22, 30, '2016-12-19', 41, 1, 1),
-(22, 30, '2016-12-19', 42, 1, 1),
-(22, 31, '2016-12-19', 43, 1, 1),
-(22, 29, '2016-12-20', 44, 0, 0),
-(22, 29, '2016-12-20', 45, 0, 0),
-(23, 33, '2016-12-20', 46, 0, 0),
-(23, 29, '2016-12-20', 47, 0, 0),
-(23, 33, '2016-12-20', 48, 0, 0),
-(23, 33, '2016-12-20', 49, 0, 0),
-(23, 29, '2016-12-20', 50, 0, 0),
-(24, 33, '2016-12-20', 51, 0, 0),
-(24, 29, '2016-12-20', 52, 0, 0),
-(24, 29, '2016-12-20', 53, 0, 0),
-(24, 29, '2016-12-20', 54, 0, 0),
-(24, 30, '2016-12-20', 55, 0, 0),
-(24, 29, '2016-12-20', 56, 0, 0),
-(24, 29, '2016-12-20', 57, 1, 1),
-(24, 30, '2016-12-20', 58, 0, 0),
-(24, 31, '2016-12-20', 59, 0, 0),
-(24, 30, '2016-12-20', 60, 0, 0),
-(24, 29, '2016-12-20', 61, 0, 0),
-(24, 29, '2016-12-20', 62, 0, 0),
-(24, 29, '2016-12-20', 63, 0, 0),
-(24, 29, '2016-12-20', 64, 0, 0),
-(24, 29, '2016-12-20', 65, 0, 0),
-(24, 29, '2016-12-20', 66, 0, 0),
-(24, 29, '2016-12-20', 67, 0, 0),
-(24, 29, '2016-12-20', 68, 0, 0),
-(24, 30, '2016-12-20', 69, 0, 0),
-(22, 30, '2016-12-20', 70, 0, 0),
-(22, 31, '2016-12-20', 71, 0, 0),
-(22, 31, '2016-12-20', 72, 0, 0),
-(23, 30, '2016-12-20', 73, 0, 0),
-(23, 29, '2016-12-20', 74, 0, 0),
-(23, 30, '2016-12-20', 75, 0, 0),
-(23, 30, '2016-12-20', 76, 1, 1),
-(23, 33, '2016-12-20', 77, 1, 1),
-(24, 29, '2016-12-20', 78, 1, 1),
-(22, 30, '2016-12-20', 79, 0, 0),
-(22, 30, '2016-12-20', 80, 1, 0),
-(22, 31, '2016-12-20', 81, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -250,9 +193,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `lastname`, `firstname`, `username`, `password`, `roles`, `salt`) VALUES
-(22, 'Messager', 'Alain', 'Messager', '$2y$13$iaUXONZeKM260E8/J9cg5OeWWr0rANz/4fsb2V5Zw9K68AZSOIzxy', 'a:1:{i:0;s:12:"ROLE_GESTION";}', ''),
-(23, 'Le Floc\'h', 'Anne', 'Le Floc\'h', '$2y$13$y2ekoIlPywiO3IG/suOGC.W7YRgl/XyrBtQA7uNhW1qjLoeqkLlgO', 'a:1:{i:0;s:15:"ROLE_REGISTERED";}', ''),
-(24, 'Le Goff', 'Jean', 'Le Goff', '$2y$13$c4krOvmun/hCT4Mi5.QeOuNnsqdN9F2Sa4AEqF0lHgDQx8hUhE7ZW', 'a:1:{i:0;s:15:"ROLE_REGISTERED";}', '');
+(27, 'Messager', 'Alain', 'Messager', '$2y$13$G3ssWTK0K3Qj.cHaR5fKbu/J7tVXGVr3oAxu03fFLTv7stU2i310K', 'a:1:{i:0;s:12:"ROLE_GESTION";}', ''),
+(28, 'Le Floc\'h', 'Anne', 'Le Floc\'h', '$2y$13$fUmbnRCAZhGQH86trsjAB.yAJfIAPoJcze5PzWQQjsqeOlfyiTc8.', 'a:1:{i:0;s:15:"ROLE_REGISTERED";}', ''),
+(29, 'Le Goff', 'Jean', 'Le Goff', '$2y$13$iv51xelbdCY/.PwCnlgA9OF/tnLUA2k6xbFdr1UWOQ3TSabwjeuFK', 'a:1:{i:0;s:15:"ROLE_REGISTERED";}', ''),
+(30, 'Le Gall', 'Marie', 'Le Gall', '$2y$13$tuLnxH4eJgusbeEzdEIIfuRBwKJhzZ3A37AOF33sL3fi0OOkbdsIq', 'a:1:{i:0;s:15:"ROLE_REGISTERED";}', ''),
+(31, 'admin', 'admin', 'admin', '$2y$13$nOgNwuWcj3AW550XtCImUuPgrYPmfqwrFkp45a5f6Uetu0EfP2jPG', 'a:1:{i:0;s:12:"ROLE_GESTION";}', ''),
+(32, 'user', 'user', 'user', '$2y$13$LxdiAMnkCNKOcS02khKKEOd/lTEW8eIkWmCSuh7Rhy6v7Mebpl6j2', 'a:1:{i:0;s:15:"ROLE_REGISTERED";}', '');
 
 --
 -- Index pour les tables exportées
@@ -328,37 +274,37 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT pour la table `cd`
 --
 ALTER TABLE `cd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `comic`
 --
 ALTER TABLE `comic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `loan`
 --
 ALTER TABLE `loan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- Contraintes pour les tables exportées
 --

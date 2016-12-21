@@ -27,9 +27,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface {
     }
 
     public function load(ObjectManager $manager) {
-        $listFirstName = array('Alain', 'Anne', 'Jean', 'Marie');
-        $listLastNames = array('Messager', 'Le Floc\'h', 'Le Goff', 'Le Gall');
-       for  ($i = 0; $i < 3; $i++) {
+        $listFirstName = array('Alain', 'Anne', 'Jean', 'Marie', 'admin', 'user');
+        $listLastNames = array('Messager', 'Le Floc\'h', 'Le Goff', 'Le Gall', 'admin', 'user');
+       for  ($i = 0; $i < 6; $i++) {
             
                 $user = new User();
                 $user->setLastname($listLastNames[$i]);
@@ -41,7 +41,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface {
                                             ->encodePassword($user, $user->getPlainPassword());
                 
                 $user->setPassword($password);
-                if ($user->getLastname() === 'Messager') {
+                if ($user->getLastname() === 'Messager' || $user->getLastname() === 'admin') {
                     $user->setRoles(array('ROLE_GESTION'));
                 } else {
                     $user->setRoles(array('ROLE_REGISTERED'));

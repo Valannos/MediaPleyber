@@ -19,7 +19,8 @@ Three types of media are currently supported : CDs, books and comics.
 ##Coding##
 
 *MediaPleyber* has been designed using PHP framework [Symfony](https://symfony.com/ "Symfony Official Website") on Ubuntu 16.04 (VM) and Windows 10 on NetBeans IDE 8.2.
-[DoctrineFixturesBundle](https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html#main) has been used to load test users (i.e. two **_registered users_** and a **_manager_**) and events.
+[DoctrineFixturesBundle](https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html#main) has been used to load test users.  Login yourself as "user" to test **_registered users_** fixtures and as "admin" to test **_manager_** one 
+(NB : password is identical to username).
 
 ##Installation##
 

@@ -1,26 +1,18 @@
- {# NAVBARS TEMPLATE #} 
+{# NAVBARS TEMPLATE #} 
 
 
 {# NAVBAR DEDICATED TO DESKTOP #}
 
 <nav class="desktop_toolbar">
+    <div>
+        <h1>Médiathèque de Pleyber-Christ</h1>
+    </div>
 
     <div>
 
-
-
-
-
-
-
-
         <a href="{{path('core_homepage')}}"><h3>Accueil</h3></a>
 
-
         <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
-
-
-
 
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
