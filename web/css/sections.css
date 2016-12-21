@@ -35,8 +35,10 @@ section div {
         row;
     flex-wrap: 
         wrap;
+    justify-content: space-around;
 }
 
+/*ARTICLES CONTAIN EITHER MEDIA OR GENERAL INFORMATIONS*/
 
 section div article {
 
@@ -44,7 +46,7 @@ section div article {
         flex;
     flex-direction: 
         column;
-
+    
 
     border: 
         2px
@@ -142,6 +144,7 @@ article:hover {
 
 }
 
+/*ASIDE IS A TOOLBAR THAT DISPLAY OR HIDE TYPE OF MEDIA IN CATALOGUE*/
 
 aside {
     display: flex;
@@ -165,6 +168,8 @@ aside button {
 
 }
 
+
+
 .aside_btn_hidden {
 
     background-color: red;
@@ -177,6 +182,43 @@ aside button:hover {
 
 }
 
+dl {
+    text-align: left;
+}
+
+.eventContent {
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.eventTitle {
+    
+    color:#916319;
+    
+}
+
+#event {
+    
+    align-self: center;
+    width: 50%;
+    border: none;
+    padding: 1em;
+    transition:
+        0.5s;
+    color:black;
+    background-color: #ffbb10;
+    
+    
+}
+#event:hover {
+    
+ 
+    color:white;
+    
+    
+}
 
 @media screen and (max-device-width: 1024px) {
 

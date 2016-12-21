@@ -15,6 +15,7 @@ header {
     flex-wrap:wrap;
      font-family: 
         'Noto Sans', sans-serif;
+     align-items: center;
 }
 .gestion {
     color: 

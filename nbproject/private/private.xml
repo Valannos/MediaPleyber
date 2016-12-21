@@ -7,10 +7,7 @@
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/informations.html.twig</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/app/Resources/views/base.html.twig</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/web/css/navbar.css</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Entity/Reservation.php</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/catalogue.html.twig</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/web/css/sections.css</file>
-            <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/navbar.html.twig</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Controller/CoreController.php</file>
             <file>file:/home/vanel/NetBeansProjects/MediaPleyber/src/CoreBundle/Resources/views/Core/newContent.html.twig</file>
         </group>

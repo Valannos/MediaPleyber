@@ -10,6 +10,7 @@
             <link rel="stylesheet" href="{{ asset('css/navbar.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/sections.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/header.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
 
         {% endblock %}
 
@@ -41,7 +42,11 @@
         {% block section %} {% endblock %}
     {% block javascripts %}{% endblock %}
     {% block footer %}
-
+        <footer>
+            
+                <h6><i class="fa fa-copyright" aria-hidden="true"></i> Mediathèque de Playber-Christ</h6>
+            
+        </footer>
     {% endblock %}
 </body>
 </html>

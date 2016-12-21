@@ -1,3 +1,7 @@
+core_default:
+    path:     /
+    defaults: { _controller: CoreBundle:Core:home }
+
 core_homepage:
     path:     /public/homepage
     defaults: { _controller: CoreBundle:Core:home }

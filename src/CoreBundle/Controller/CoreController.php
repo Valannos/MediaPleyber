@@ -90,9 +90,14 @@ class CoreController extends Controller {
         $cds = $this->getCdRepository()->findAll();
         $comics = $this->getComicRepository()->findAll();
         $media = $this->getMediaRepository()->find($media_id);
+
+        //Try to update current media status from "available" to "reserved"
         $update = $this->getMediaRepository()->updateStatutToReserved($media, 2);
         $books = $this->getBookRepository()->findAll();
         $catalogue = $this->getMediaRepository()->findAll();
+
+        //if media is already reseved or loan, return an error message in catalogue page
+
         if (!$update) {
 
             return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 0, 'reqMedia' => $media_id, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
@@ -100,11 +105,13 @@ class CoreController extends Controller {
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
+        //if media has been successfully reserved, return a confirmation message in catalogue page
+
         if ($this->getReservationRepository()->createReservation($user, $media_id)) {
             return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 2, 'reqMedia' => $media_id, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
         } else {
 
-
+            //if media has not been successfully reserved, return a generic error message in catalogue page
             return $this->render('CoreBundle:Core:catalogue.html.twig', array('isSuccessfullyReserved' => 1, 'reqMedia' => $media_id, 'catalogue' => $catalogue, 'Cd' => $cds, 'Comics' => $comics));
         }
     }
@@ -118,9 +125,9 @@ class CoreController extends Controller {
         $userLoan = $this->getLoanRepository()->getUserLoans($user);
         return $this->render('CoreBundle:Core:ResLoan.html.twig', array('Reservation' => $userReservation, 'Loan' => $userLoan));
     }
-    
+
     /* GIVES ACCESS TO A MANAGER TO ALL ACTIVE RESERVATIONS AND LOANS */
-    
+
     public function manageReservationAction() {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
             throw $this->createAccessDeniedException();
@@ -129,9 +136,9 @@ class CoreController extends Controller {
         $allRes = $this->getReservationRepository()->getReservationsWithoutEffectiveLoan();
         return $this->render('CoreBundle:Core:AllResAllLoans.html.twig', array('Reservation' => $allRes, 'Loan' => $allLoan));
     }
-  /* ALLOWS A MANAGER TO ARCHIVE A RESERVATION AND CREATE A LOAN BASED ON IT */
-    
-    
+
+    /* ALLOWS A MANAGER TO ARCHIVE A RESERVATION AND CREATE A LOAN BASED ON IT */
+
     public function validLoanAction($res_id) {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
             throw new AccessDeniedException('Accès réservé aux gestionnaires');
@@ -161,10 +168,9 @@ class CoreController extends Controller {
             return $this->redirectToRoute('core_reservation', array('Reservation' => $allRes, 'Loan' => $allLoan, 'isSuccessfullyBorrowed' => true));
         }
     }
-    
-  /* ALLOWS A MANAGER TO CANCEL A ACTIVE RESERVATION ; IT IS NEVERTHELESS NOT SUPRESSED FROM DB */
-    
-    
+
+    /* ALLOWS A MANAGER TO CANCEL A ACTIVE RESERVATION ; IT IS NEVERTHELESS NOT SUPRESSED FROM DB */
+
     public function cancelReservationAction($res_id) {
         $res = $this->getReservationRepository()->find($res_id);
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION') && $res->getUser() != $this->get('security.token_storage')->getToken()->getUser()) {
@@ -187,7 +193,9 @@ class CoreController extends Controller {
             }
         }
     }
-
+/*ALLOWS MANAGER TO VALID MEDIA RETURN, LOAN IS ARCHIVED WHILE RETURN DATE IS WRITTEN IN TABLE*/
+    
+    
     public function validReturnAction($loan_id) {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
             throw $this->createAccessDeniedException();
@@ -222,7 +230,7 @@ class CoreController extends Controller {
     }
 
     /* ALLOWS A USER TO CANCEL ONE OF HIS/HER OWN ACTIVE RESERVATION ; IT IS NEVERTHELESS NOT SUPRESSED FROM DB */
-    
+
     public function cancelReservationAsUserAction($res_id) {
         $res = $this->getReservationRepository()->find($res_id);
         if ($res->getUser() != $this->get('security.token_storage')->getToken()->getUser()) {

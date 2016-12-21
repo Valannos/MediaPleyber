@@ -16,11 +16,11 @@ class MediaRepository extends \Doctrine\ORM\EntityRepository {
 
     public function getNewContent() {
         $date = new \DateTime();
-        $interval = new \DateInterval('P3M');
+        $interval = new \DateInterval('P6M');
         
 
         $limitDate = $date->sub($interval);
-        var_dump($limitDate);
+       // var_dump($limitDate);
         $qb = $this->createQueryBuilder('m')
                 ->where('m.date > :date')
                 ->setParameter('date', $limitDate)
