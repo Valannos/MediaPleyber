@@ -1,4 +1,4 @@
-{# empty Twig template #}
+{# INFORMATIONS TEMPLATE #}
 {% extends 'base.html.twig' %}
 
 {% block stylesheet %}
@@ -23,26 +23,15 @@
 {% block section %}
 
     <section>
-        <h3>Localisation</h3>
+        <h3>Localisation <i class="fa fa-map-o" aria-hidden="true"></i></h3>
         <article>
 
             Porz Ruz <br/>
             29410 Pleyber-Christ
 
-            {#  <div id="map" width="400" height = "400">GoogleMap</div> #}
-            <script>
-                /* function myMap() {
-                 var mapCanvas = document.getElementById("map");
-                 var mapOptions = {
-                 center: new google.maps.LatLng(48.5087406, -3.8894754),
-                 zoom: 10
-                 };
-                 var map = new google.maps.Map(mapCanvas, mapOptions);
-                 }*/
-            </script>
-            <script src=""></script>
+
         </article>
-        <h3>Horaires</h3>
+        <h3>Horaires <i class="fa fa-clock-o" aria-hidden="true"></i></h3>
         <div>
             <article>
                 <h4>Mardi</h4>
@@ -56,10 +45,11 @@
             </article>
             <article>
                 <h4>Jeudi</h4>
-                <p><strong> réservé aux écoles et aux groupes</strong></p>
+                <p><strong>réservé aux écoles<br/> et groupes</strong></p>
             </article>
             <article>
                 <h4>Vendredi</h4>
+                <p>Fermé le matin</p>
                 <p>16h30 à 18h30</p>
             </article>
             <article>
@@ -67,7 +57,7 @@
                 <p>10h00 à 12h00</p> <p>13h30 à 15h30</p>
             </article>
         </div>
-        <h3>Contact</h3>
+        <h3>Contact <i class="fa fa-envelope-o" aria-hidden="true"></i></h3>
         <div>
             <article>
                 <p>
@@ -81,7 +71,7 @@
             </article>
         </div>
         <div>
-            <h3>Newsletter</h3>
+            <h3>Newsletter <i class="fa fa-newspaper-o" aria-hidden="true"></i></h3>
             <article>
                 Pour recevoir les news de la médiathèque, (fermetures, animations...) être prévenu en temps réel de l'arrivée de votre réservation, 
                 envoyez nous votre adresse Mail à l'adresse suivante : <a href="mailto:mediatheque.pleyber@orange.fr">mediatheque.pleyber@orange.fr</a>

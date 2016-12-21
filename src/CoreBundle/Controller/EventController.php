@@ -18,9 +18,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  *
  * @author vanel
  */
+
 class EventController extends Controller {
 
-   
+   /*RETURN EVENTS LIST AS JSON FILE*/
 
     public function displaysEventAction() {
         

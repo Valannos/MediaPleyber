@@ -1,3 +1,5 @@
+{# HOMEPAGE TEMPLATE #}
+
 {% extends 'base.html.twig' %}
 
 
@@ -18,7 +20,7 @@
 
 {% block section %}
     <section>
-        <h1>Bienvenue sur le site de la médiathèque de Pleyber-Christ !</h1>
+        <h2>Bienvenue !</h2>
         <div>
 
             <article>
@@ -32,10 +34,10 @@
         </div>
         <div>
             <article>
-                <img alt="photo_mediathèque_01" src='{{asset('img/mediatheque 2010 1.jpg')}}' height='212.5' weight='141.75'>
+                <img class="photo_mediatheque" alt="photo_mediathèque_01" src='{{asset('img/mediatheque 2010 1.jpg')}}' width='425' height='282.5'>
             </article>
             <article>
-                <img alt="photo_mediathèque_02" src='{{asset('img/mediatheque 2010 2.jpg')}}' height='212.5' weight='141.75'>
+                <img class="photo_mediatheque" alt="photo_mediathèque_02" src='{{asset('img/mediatheque 2010 2.jpg')}}' width='425' height='282.5'>
             </article>
         </div>
         <h3>Les espaces</h3>
@@ -97,7 +99,7 @@
 
 
 
-        <h3>Evènements</h3>
+        <h3>Evènements <i class="fa fa-handshake-o" aria-hidden="true"></i></h3>
         <div>
 
             <article id="eventsBlock">

@@ -1,4 +1,4 @@
-{# empty Twig template #}
+{# NEW CONTENT TEMPLATE #}
 {% extends "base.html.twig" %}
 {% block stylesheet %}
 
@@ -23,20 +23,20 @@
 {% block section %}
 
     <section>
-        {# DISPLAYS BOOKS LIST #}
-        <h2>Les nouveautés</h2>
+        
+        <h3>Les nouveautés</h3>
         <div>
             {% for media in newContent %}
                 <article>
 
                     <h4>{{media.title}}</h4>
                     {% if media.type == 0 %}
-                        <img src="{{asset('img/books')}}/{{media.cover}}" alt="{{media.title}}" width="205" height="340">
+                        <img class="book_img" src="{{asset('img/books')}}/{{media.cover}}" alt="{{media.title}}" width="205" height="340">
                     {% elseif media.type == 1 %}
 
-                        <img src="{{asset('img/cds')}}/{{media.cover}}" alt="{{media.title}}" width="250" height="250">
+                        <img class="cd_img" src="{{asset('img/cds')}}/{{media.cover}}" alt="{{media.title}}" width="250" height="250">
                     {% elseif media.type == 2 %}
-                        <img src="{{asset('img/comics')}}/{{media.cover}}" alt="{{media.title}}"  width = "255" height="351" >
+                        <img class="comic_img" src="{{asset('img/comics')}}/{{media.cover}}" alt="{{media.title}}"  width = "255" height="351" >
                     {% endif %}
 
                     {% if media.statut == 1 %}

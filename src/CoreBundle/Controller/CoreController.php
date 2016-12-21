@@ -42,9 +42,6 @@ class CoreController extends Controller {
         return $this->render('CoreBundle:Core:catalogue.html.twig', array('catalogue' => $catalogue, 'books' => $books, 'Cd' => $cds, 'Comics' => $comics));
     }
 
-    /* ++++++++++++++RESERVATIONS AND LOANS METHODS+++++++++++++++ */
-
-
     /* -------------------REPOSITORY ACCESS METHODS------------ */
 
     public function getLoanRepository() {
@@ -77,9 +74,6 @@ class CoreController extends Controller {
 
         return $this->getDoctrine()->getManager()->getRepository('CoreBundle:Comic');
     }
-
-    /* ------------------------------------------- */
-
 
     /* -------------------RESERVATIONS & LOANS METHODS------------ */
 
@@ -193,9 +187,9 @@ class CoreController extends Controller {
             }
         }
     }
-/*ALLOWS MANAGER TO VALID MEDIA RETURN, LOAN IS ARCHIVED WHILE RETURN DATE IS WRITTEN IN TABLE*/
-    
-    
+
+    /* ALLOWS MANAGER TO VALID MEDIA RETURN, LOAN IS ARCHIVED WHILE RETURN DATE IS WRITTEN IN TABLE */
+
     public function validReturnAction($loan_id) {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_GESTION')) {
             throw $this->createAccessDeniedException();

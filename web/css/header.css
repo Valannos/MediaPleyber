@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : vanel
 */
 
+h1 {
+    text-align: center;
+     font-family: 
+        'Noto Sans', sans-serif;
+}
+
 header {
 
     display: flex;
@@ -31,7 +37,7 @@ header {
         'Noto Sans', sans-serif;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 479px) {
     
     header {
        
@@ -42,6 +48,12 @@ header {
     header div {
         
       
+        
+    }
+    .photo_mediatheque {
+        
+        width:212.5px; 
+        height:141.75px;
         
     }
     

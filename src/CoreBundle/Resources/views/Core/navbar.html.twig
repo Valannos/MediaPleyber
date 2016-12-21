@@ -1,17 +1,42 @@
-{# empty Twig template #}
+ {# NAVBARS TEMPLATE #} 
 
 
-
+{# NAVBAR DEDICATED TO DESKTOP #}
 
 <nav class="desktop_toolbar">
+
     <div>
 
 
 
-        {# Following field will only be displayed if a valid user is logged #}
+
+
+
+
+
+        <a href="{{path('core_homepage')}}"><h3>Accueil</h3></a>
+
+
+        <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
+
+
+
+
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
+                {% endif %}
+
+
+        <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
+
+
+
+        <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations</h3></a>
+
+
 
         {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
-            <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes réservations et emprunts</h3></a>
+            <a href="{{ path('core_user_res_and_load')}}" ><h3>Mes emprunts</h3></a>
         {% endif %}
 
         {% if is_granted('ROLE_GESTION')  %}
@@ -38,64 +63,26 @@
                     {% endif %}
 
 
-        </div>
-
-
-        <div >
-
-            <a href="{{path('core_homepage')}}"><h3>Accueil</h3></a>
-
-
-            <a href="{{path('core_newcontent')}}"><h3>Nouveautés  </h3></a>
-
-
-
-
-            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a href="{{ path('login')}}"><h3>Connexion <i class="fa fa-sign-in" aria-hidden="true"></i></h3></a>
-                    {% endif %}
-
-
-            <a href="{{path('core_catalogue')}}"><h3>Catalogue</h3></a>
-
-
-
-            <a href="{{ path('core_additionnal_informations') }}"> <h3>Informations pratiques </h3></a>
-
-            {# 
-    
-            {% if is_granted('ROLE_GESTION')  %}
-                <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations et Emprunts</h3></a>
-            {% endif %}
-    #}
-            {# Following field will only be displayed if a valid user is logged #}
-
-
-            {#   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                   <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
-                       {% endif %} #}
-
-            {# Following field will only be displayed if a valid user is logged #}
-
 
         </div>
     </nav>
 
+    {# NAVBAR DEDICATED TO LOW RESOLUTIONS AND MOBILES DEVICES #}
 
     <div class="smartphone_toolbar">
-
+        <h1>Médiathèque de Pleyber-Christ</h1>
 
         <div class="icon-bar">
 
             {# Following field will only be displayed if a valid user is logged #}
 
             {% if is_granted('ROLE_REGISTERED') or is_granted('ROLE_GESTION') %}
-                <a href="{{ path('core_user_res_and_load')}}" title="Accéder à vos réservations et emprunts"><i class="fa fa-leanpub" aria-hidden="true"></i></a>
-            {% endif %}
+                <a href="{{ path('core_user_res_and_load')}}" title="Accéder à vos réservations et emprunts"><i class="fa fa-book" aria-hidden="true"></i></a>
+                {% endif %}
 
             {% if is_granted('ROLE_GESTION')  %}
-                <a class="gestion" href="{{path('core_reservation')}}" title="Gérer les emprunts et réservations"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-            {% endif %}
+                <a class="gestion" href="{{path('core_reservation')}}" title="Gérer les emprunts et réservations"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                {% endif %}
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
@@ -113,17 +100,17 @@
             <a href="{{path('core_homepage')}}" title="Accueil"><i class="fa fa-home"></i></a>
 
 
-            <a href="{{path('core_newcontent')}}" title="Nouveautés"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a href="{{path('core_newcontent')}}" title="Nouveautés"><i class="fa fa-star" aria-hidden="true"></i></a>
 
 
 
 
             {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a href="{{ path('login')}}" title="Se connecter"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-            {% endif %}
+                {% endif %}
 
 
-            <a href="{{path('core_catalogue')}}" title="Consulter le catalogue"><i class="fa fa-book" aria-hidden="true"></i></a>
+            <a href="{{path('core_catalogue')}}" title="Consulter le catalogue"><i class="fa fa-leanpub" aria-hidden="true"></i></a>
 
 
 

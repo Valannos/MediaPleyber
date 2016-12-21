@@ -10,11 +10,9 @@ and open the template in the editor.
 
 
 
-/*-----------------NAVBAR-----------------------
+/*DESKTOP*/
 
-1) GENERAL
 
-*/
 
 nav div  {
     background-color: 
@@ -71,22 +69,16 @@ nav div a h3:hover {
 
 
 
-
-
-
-
 .smartphone_toolbar {
 
     display: none;
 
 }
 
-/*SMARTPHONE*/
+/*LOW RES OR MOBILES DEVICES*/
 
-@media screen and (max-width: 640px) {
-    * {
-        font-size:small;
-    }
+@media screen and (max-width: 768px) {
+ 
     .desktop_toolbar {
 
         display: none;
