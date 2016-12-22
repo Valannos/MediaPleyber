@@ -108,42 +108,10 @@
 
             <a href="{{ path('core_additionnal_informations') }}" title="Informations"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
 
-            {# 
-    
-            {% if is_granted('ROLE_GESTION')  %}
-                <a class="gestion" href="{{path('core_reservation')}}"><h3>Réservations et Emprunts</h3></a>
-            {% endif %}
-    #}
-            {# Following field will only be displayed if a valid user is logged #}
-
-
-            {#   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                   <a href="{{ path('logout')}}"><h3>Se déconnecter  <i class="fa fa-sign-out" aria-hidden="true"></i></h3></a>
-                       {% endif %} #}
-
-            {# Following field will only be displayed if a valid user is logged #}
+           
 
 
         </div>
     </div>   
 
-    <script>
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        var nav_dropbtn = document.getElementById('nav_dropbtn');
-        window.onclick = function (event) {
-            if (!event.target.matches('.dropbtn')) {
-
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        };
-    </script>
+    

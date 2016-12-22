@@ -1,0 +1,163 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 déc. 2016, 20:35:45
+    Author     : Valannos
+*/
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+    /*   border:
+           2px
+           black
+           solid; 
+    */
+}
+
+form div {
+  /*  border:
+        2px
+        black
+        solid; */
+}
+
+
+.buttons_div {
+
+
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+    width: 40%;
+
+
+
+
+
+}
+
+.field {
+    width: 50%;
+
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+
+}
+
+input[type=text],  input[type=password] {
+
+    padding: 
+        10px;
+
+    width: 50%;
+
+
+}
+
+/*BUTTONS STYLES*/
+
+input[type=submit] {
+    font-weight:bold;
+    padding: 
+        15px
+        25px;
+    background-color: 
+        #2BBA07;
+    border:none;
+    transition: 0.6s;
+
+}
+
+input[type=reset] {
+    font-weight:bold;
+    opacity: 1;
+    padding: 
+        15px
+        25px;
+    background-color: 
+        #EB313B;
+    border:none;
+    transition: 0.5s;
+
+}
+
+input[type=submit]:hover, input[type=reset]:hover {
+
+
+    opacity: 0.8;
+
+
+}
+
+
+
+
+
+.error {
+
+
+    text-align: center;
+    border:
+        3px
+        #F00514
+        solid;
+    font-family: 'Noto Sans', sans-serif;
+    padding: 5px;
+    margin:5px;
+    border-radius: 5px;
+    background-color: rgba(240, 5, 20, 0.5);
+
+
+}
+
+@media screen and (max-device-width: 479px) {
+
+
+    form {
+
+
+
+    }
+
+    .field {
+        width: 90%;
+
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .buttons_div {
+
+
+    margin: 6px;
+    display: flex;
+    flex-direction: column;
+    
+    height: 8em;
+    width: 50%;
+   
+
+    input[type=reset] {
+        
+        margin-top: 1em;
+        
+    }
+
+
+}
+
+}

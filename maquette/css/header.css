@@ -1,0 +1,63 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 19 déc. 2016, 11:13:26
+    Author     : vanel
+*/
+
+h1 {
+    text-align: center;
+     font-family:
+        'Noto Sans', sans-serif;
+}
+
+header {
+  border: 3px black solid;
+  border-radius: 10px 10px;
+
+    display: flex;
+
+    flex-wrap:wrap;
+     font-family:
+        'Noto Sans', sans-serif;
+     align-items: center;
+}
+.gestion {
+    color:
+        red;
+    font-weight:
+        bold;
+
+}
+.registered {
+    font-weight:
+        bold;
+    font-family:
+        'Noto Sans', sans-serif;
+}
+
+@media screen and (max-width: 479px) {
+
+    header {
+
+         flex-direction: column;
+         align-items: center;
+
+    }
+    header div {
+
+
+
+    }
+    .photo_mediatheque {
+
+        width:212.5px;
+        height:141.75px;
+
+    }
+
+
+}

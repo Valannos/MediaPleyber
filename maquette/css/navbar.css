@@ -1,0 +1,151 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 19 déc. 2016, 10:22:01
+    Author     : vanel
+*/
+
+
+
+/*DESKTOP*/
+
+nav  {
+  border: 3px solid black;
+  border-radius: 10px 10px;
+}
+nav div{
+  border: 3px solid black;
+  border-radius: 10px 10px;
+    background-color:
+        #edeeef;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content:center;
+    text-align:center;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    margin:
+        1em;
+    padding:
+        1em;
+
+}
+nav div a {
+      text-decoration: none;
+}
+nav div a  h3 {
+    font-family: 'Noto Sans', sans-serif;
+
+    font-weight: bold;
+    color: black;
+
+    margin:
+        0.3em;
+
+    padding:
+        1em;
+
+    background-color:
+        #ffbb10;
+    transition:
+        0.8s;
+    opacity:
+        1;
+    text-decoration: none;
+
+}
+nav div a h3:hover {
+    opacity:
+        0.8;
+    color:
+        white;
+
+
+}
+
+
+
+
+
+.smartphone_toolbar {
+
+     border: 3px solid black;
+  border-radius: 10px 10px;
+    display: none;
+
+}
+
+/*LOW RES OR MOBILES DEVICES*/
+
+@media screen and (max-width: 768px) {
+
+    .desktop_toolbar {
+
+        display: none;
+    }
+    .smartphone_toolbar {
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+
+
+
+
+
+    .icon-bar {
+        width: 100%;
+        text-align: center;
+        background-color: #555;
+        overflow: auto;
+        display: flex;
+        justify-content:center;
+    }
+
+    .icon-bar a {
+        width: 20%;
+        padding: 12px 0;
+        float: left;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 36px;
+    }
+
+    .icon-bar a:hover {
+        background-color: #edeeef;
+        color: #ffbb10;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+
+    .gestion:hover {
+
+
+        color: red;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

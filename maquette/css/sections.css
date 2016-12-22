@@ -1,0 +1,353 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 19 déc. 2016, 10:57:37
+    Author     : vanel
+*/
+
+/*SECTION*/
+
+.hidden {
+
+    display: none;
+
+}
+
+
+section  {
+  border: 3px solid black;
+  border-radius: 10px 10px;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    background-color:
+        #edeeef;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/*SECTION DIV CONTAINS COLLECTION OF ARTICLES*/
+
+section div {
+      border: 3px solid black;
+  border-radius: 10px 10px;
+    display:
+        flex;
+    flex-direction:
+        row;
+    flex-wrap:
+        wrap;
+    justify-content: space-around;
+}
+
+section h3 {
+    
+        border: 3px solid black;
+  border-radius: 10px 10px;
+    
+}
+
+/*ARTICLES CONTAIN EITHER MEDIA OR GENERAL INFORMATIONS*/
+
+section div article {
+
+    display:
+        flex;
+    flex-direction:
+        column;
+    flex-wrap: wrap;
+    justify-content:space-around;
+
+
+    border:
+        2px
+        #ffbb10
+        solid;
+    border-radius:
+        10px
+        10px
+        ;
+    margin:
+        1em;
+    text-align:
+        center;
+    padding:
+        1em;
+
+}
+
+section div article h4 {
+    width: 80%;
+    align-self: center;
+}
+section div article p {
+
+    align-self: center;
+   /* border:
+        2px
+        black
+        solid;*/
+    margin: 0.2em;
+}
+
+article img {
+
+    align-self: center;
+
+
+
+
+}
+
+
+article:hover {
+
+    transition: 0.5s;
+    background-color: #878c95;
+
+}
+
+.available {
+
+    color:green;
+    font-weight: bold;
+
+}
+.reserved {
+    color:darkorange;
+    font-weight: bold;
+
+}
+
+.notAvailable {
+
+    color:red;
+    font-weight: bold;
+
+}
+.reservation, .annulation {
+
+
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin:
+        1em;
+    border:
+        0.7px
+        #ffbb10
+        solid;
+    padding:
+        1em;
+
+    background-color:
+        #ffbb10;
+    transition:
+        0.5s;
+    opacity:
+        1;
+    text-decoration:
+        none;
+    border-radius:
+        20px
+        20px;
+    width: auto;
+}
+.reservation:hover {
+    opacity:
+        0.8;
+    color:
+        green;
+
+}
+.annulation:hover {
+    opacity:
+        0.8;
+    color:
+        red;
+
+
+}
+
+/*ASIDE IS A TOOLBAR THAT DISPLAY OR HIDE TYPE OF MEDIA IN CATALOGUE*/
+
+aside {
+  border: 3px solid black;
+  border-radius: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+
+
+}
+
+aside button {
+
+
+    background-color: #878c95;
+    color: white;
+    padding: 1.5em;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 1em;
+    transition: 0.6s;
+    width: auto;
+
+}
+
+
+
+.aside_btn_hidden {
+
+    background-color:red;
+    color: white;
+}
+
+aside button:hover {
+
+    color: #ffbb10;
+
+}
+
+dl {
+    text-align: left;
+}
+
+.eventContent {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.eventTitle {
+
+    color:#916319;
+
+}
+
+#event {
+
+    align-self: center;
+    width: 50%;
+    border: none;
+    padding: 1em;
+    transition:
+        0.5s;
+    color:black;
+    background-color: #ffbb10;
+
+
+}
+#event:hover {
+
+
+    color:white;
+
+
+}
+
+#books_block {
+  border: 3px black solid;
+  border-radius: 10px 10px;
+}
+
+@media screen and (max-width: 479px) {
+
+    section {
+        margin: 0.5em;
+    }
+
+    .book_img {
+
+        width: 82px;
+        height: 136px;
+
+    }
+    .cd_img {
+
+        width:125px;
+        height: 125px;
+    }
+    .comic_img {
+
+        height: 175.5px;
+        width: 127.5px;
+
+    }
+
+    section div article {
+
+
+
+
+        padding:
+            0.2em;
+
+    }
+    section div {
+
+        flex-direction:
+            column;
+        flex-wrap:
+            wrap;
+
+    }
+
+    .reservation, .annulation {
+
+
+
+        width: 45%;
+        align-self: center;
+    }
+
+
+    section div article {
+
+        display:
+            flex;
+        flex-direction:
+            column;
+        justify-content: flex-end;
+
+        border:
+            2px
+            #ffbb10
+            solid;
+        border-radius:
+            5px
+            5px
+            ;
+        margin:
+            1em;
+        text-align:
+            center;
+        padding:
+            0.5em;
+        width:auto;
+
+    }
+    aside button {
+
+
+
+        padding: 0.5em;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin: 1em;
+        transition: 0.6s;
+        width: auto;
+
+    }
+
+
+
+}
